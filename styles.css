@@ -491,6 +491,7 @@ img, svg, i {
     font-size: 3rem;
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
 }
@@ -811,5 +812,9 @@ img, svg, i {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+
+    .logo img {
+        width: 120px;
     }
 }
