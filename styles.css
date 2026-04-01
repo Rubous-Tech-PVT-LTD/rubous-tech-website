@@ -240,7 +240,8 @@ img, svg, i {
 }
 
 .logo img {
-    height: 155px;
+    height: auto;
+    max-height: calc(var(--nav-height) - 1px);
     width: auto;
     display: block;
     object-fit: contain;
