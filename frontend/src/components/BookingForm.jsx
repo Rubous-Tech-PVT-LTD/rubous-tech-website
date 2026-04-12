@@ -20,7 +20,8 @@ const BookingForm = () => {
       if (!formData.date) return;
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/bookings/available?date=${formData.date}`);
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const res = await fetch(`${apiBaseUrl}/api/bookings/available?date=${formData.date}`);
         const data = await res.json();
         if (data.success) {
           setAvailableSlots(data.data);
@@ -40,7 +41,8 @@ const BookingForm = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const res = await fetch('http://localhost:5000/api/bookings', {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiBaseUrl}/api/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
