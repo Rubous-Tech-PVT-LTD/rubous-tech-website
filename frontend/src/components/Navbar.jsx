@@ -24,7 +24,7 @@ const Navbar = () => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Rubous Tech" className="h-10 w-auto" />
+          <img src="/logo.png" alt="Rubous Tech" className="h-14 w-auto" />
           <span className="text-xl font-bold text-navy hidden sm:block">Rubous Tech</span>
         </div>
 

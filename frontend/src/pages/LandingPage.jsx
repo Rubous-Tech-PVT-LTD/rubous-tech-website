@@ -5,6 +5,7 @@ import Features from '../components/Features';
 import BookingForm from '../components/BookingForm';
 import Pricing from '../components/Pricing';
 import Footer from '../components/Footer';
+import AIProcessingMarquee from '../components/AIProcessingMarquee';
 import { motion } from 'framer-motion';
 
 const LandingPage = () => {
@@ -13,6 +14,7 @@ const LandingPage = () => {
       <Navbar />
       <main>
         <Hero />
+        <AIProcessingMarquee />
         <Features />
         
         {/* Booking Section */}

@@ -87,7 +87,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-background relative overflow-hidden">
+    <section id="pricing" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 fade-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Simple, Transparent Pricing</h2>

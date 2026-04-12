@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Twitter, Github, Mail, MapPin, Phone } from 'lucide-react';
+import { MessageSquare, Share2, Globe, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Rubous Tech" className="h-10 w-auto brightness-0 invert" />
+              <img src="/logo.png" alt="Rubous Tech" className="h-14 w-auto brightness-0 invert" />
               <span className="text-xl font-bold">Rubous Tech</span>
             </div>
             <p className="text-white/60 leading-relaxed font-medium">
@@ -18,13 +18,13 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
-                <Linkedin size={20} />
+                <MessageSquare size={20} />
               </a>
               <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
-                <Twitter size={20} />
+                <Share2 size={20} />
               </a>
               <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
-                <Github size={20} />
+                <Globe size={20} />
               </a>
             </div>
           </div>
