@@ -1,41 +1,42 @@
-const fs = require('fs');
-const path = require('path');
+const mongoose = require('mongoose');
 
-const DATA_PATH = path.join(__dirname, '../data/bookings.json');
-
-// Ensure data directory exists
-if (!fs.existsSync(path.join(__dirname, '../data'))) {
-  fs.mkdirSync(path.join(__dirname, '../data'));
-}
-
-// Ensure bookings file exists
-if (!fs.existsSync(DATA_PATH)) {
-  fs.writeFileSync(DATA_PATH, JSON.stringify([]));
-}
-
-const Booking = {
-  getAll: () => {
-    const data = fs.readFileSync(DATA_PATH, 'utf8');
-    return JSON.parse(data);
+const BookingSchema = new mongoose.Schema({
+  clientName: {
+    type: String,
+    required: [true, 'Please add a client name'],
+    trim: true
   },
-
-  create: (bookingData) => {
-    const bookings = Booking.getAll();
-    const newBooking = {
-      id: Date.now().toString(),
-      ...bookingData,
-      status: 'pending',
-      createdAt: new Date().toISOString()
-    };
-    bookings.push(newBooking);
-    fs.writeFileSync(DATA_PATH, JSON.stringify(bookings, null, 2));
-    return newBooking;
+  clientEmail: {
+    type: String,
+    required: [true, 'Please add an email'],
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Please add a valid email'
+    ]
   },
-
-  checkAvailability: (date, timeSlot) => {
-    const bookings = Booking.getAll();
-    return !bookings.some(b => b.date === date && b.timeSlot === timeSlot);
+  date: {
+    type: String, // String in YYYY-MM-DD format to match front-end
+    required: [true, 'Please add a date']
+  },
+  timeSlot: {
+    type: String,
+    required: [true, 'Please add a time slot']
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'confirmed', 'cancelled'],
+    default: 'pending'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
+});
+
+// Static method to check availability
+BookingSchema.statics.checkAvailability = async function(date, timeSlot) {
+  const booking = await this.findOne({ date, timeSlot, status: { $ne: 'cancelled' } });
+  return !booking;
 };
 
-module.exports = Booking;
+module.exports = mongoose.model('Booking', BookingSchema);
