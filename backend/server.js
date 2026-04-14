@@ -7,6 +7,10 @@ const morgan = require('morgan');
 // Load env vars
 dotenv.config();
 
+// Connect to database
+const connectDB = require('./config/db');
+connectDB();
+
 const app = express();
 
 // Body parser
