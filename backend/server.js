@@ -26,6 +26,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Routes
 const bookingRoutes = require('./routes/bookingRoutes');
+const pricingRoutes = require('./routes/pricingRoutes');
 
 // Basic Route
 app.get('/', (req, res) => {
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
 
 // Register Routes
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/pricing', pricingRoutes);
 
 const PORT = process.env.PORT || 5001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
