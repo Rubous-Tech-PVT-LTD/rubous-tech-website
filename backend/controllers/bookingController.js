@@ -2,7 +2,7 @@ const Booking = require('../models/Booking');
 
 // @desc    Create a new booking
 // @route   POST /api/bookings
-exports.createBooking = (req, res) => {
+exports.createBooking = async (req, res) => {
   try {
     const { clientName, clientEmail, date, timeSlot } = req.body;
 
@@ -11,12 +11,12 @@ exports.createBooking = (req, res) => {
     }
 
     // Check availability
-    const isAvailable = Booking.checkAvailability(date, timeSlot);
+    const isAvailable = await Booking.checkAvailability(date, timeSlot);
     if (!isAvailable) {
       return res.status(400).json({ success: false, message: 'This slot is already booked' });
     }
 
-    const booking = Booking.create({ clientName, clientEmail, date, timeSlot });
+    const booking = await Booking.create({ clientName, clientEmail, date, timeSlot });
 
     res.status(201).json({
       success: true,
@@ -30,9 +30,9 @@ exports.createBooking = (req, res) => {
 
 // @desc    Get all bookings
 // @route   GET /api/bookings
-exports.getBookings = (req, res) => {
+exports.getBookings = async (req, res) => {
   try {
-    const bookings = Booking.getAll();
+    const bookings = await Booking.find().sort({ createdAt: -1 });
     res.status(200).json({ success: true, count: bookings.length, data: bookings });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Server error' });
@@ -41,7 +41,7 @@ exports.getBookings = (req, res) => {
 
 // @desc    Check available slots for a date
 // @route   GET /api/bookings/available?date=YYYY-MM-DD
-exports.getAvailableSlots = (req, res) => {
+exports.getAvailableSlots = async (req, res) => {
   try {
     const { date } = req.query;
     if (!date) {
@@ -50,11 +50,9 @@ exports.getAvailableSlots = (req, res) => {
 
     // Standard slots
     const allSlots = ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
-    const bookings = Booking.getAll();
     
-    const bookedSlots = bookings
-      .filter(b => b.date === date)
-      .map(b => b.timeSlot);
+    const bookings = await Booking.find({ date, status: { $ne: 'cancelled' } });
+    const bookedSlots = bookings.map(b => b.timeSlot);
 
     const availableSlots = allSlots.filter(slot => !bookedSlots.includes(slot));
 
