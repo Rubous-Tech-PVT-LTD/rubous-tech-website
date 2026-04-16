@@ -74,7 +74,7 @@ const Values = () => {
         </div>
 
         {/* Bottom Gradient Card */}
-        <div className="rounded-3xl p-10 bg-linear-to-r from-indigo-600 to-purple-600 text-white shadow-md">
+        <div className="rounded-3xl p-10 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
           <div className="w-12 h-12 flex items-center justify-center bg-white/20 rounded-xl mb-6">
             <bottomValue.icon size={22} />
           </div>

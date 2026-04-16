@@ -4,7 +4,7 @@ const AboutHeader = () => {
   return (
     <div className="min-h-screen flex relative z-10">
       <div className='max-w-[384px] max-h-96 w-full h-full bg-primary/20 right-10 top-7 blur-2xl rounded-full absolute -z-10 '></div>
-      <div className='max-w-[384px] max-h-96 w-full h-full bg-primary/20 right-150 bottom-5 blur-2xl rounded-full absolute -z-10 '></div>
+      <div className='max-w-[384px] max-h-96 w-full h-full bg-primary/20 right-[600px] bottom-5 blur-2xl rounded-full absolute -z-10 '></div>
       <div className="container mx-auto px-5 flex grow items-center">
         <div className="flex flex-row items-center w-full">
           
@@ -13,11 +13,11 @@ const AboutHeader = () => {
               OUR VISION
             </div>
 
-            <h1 className="font-bold text-[#32294F] text-7xl max-w-127.5 mb-8">
+            <h1 className="font-bold text-[#32294F] text-7xl max-w-[510px] mb-8">
               We’re Building the <span className='text-primary'>Future</span> of Automation
             </h1>
 
-            <p className="text-base text-gray-600 mb-10 max-w-127.5">
+            <p className="text-base text-gray-600 mb-10 max-w-[510px]">
               Empowering enterprises through invisible intelligence. We
               create fluid, AI-driven engines that transform complex
               workflows into effortless outcomes.

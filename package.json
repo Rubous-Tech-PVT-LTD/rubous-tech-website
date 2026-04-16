@@ -24,8 +24,5 @@
     "get-shit-done-cc": "^1.34.2",
     "ralph-loop-agent": "^0.0.3",
     "tsx": "^4.19.2"
-  },
-  "dependencies": {
-    "react-router-dom": "^7.14.1"
   }
 }

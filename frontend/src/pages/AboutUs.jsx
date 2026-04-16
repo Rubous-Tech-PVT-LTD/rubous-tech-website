@@ -2,8 +2,8 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import AboutHeader from '../components/aboutus/AboutHeader'
 import StatsSection from '../components/aboutus/StatsSection'
-import TheRobousJourney from '../components/aboutus/TheRobousJourney'
-import MissionVision from '../components/aboutus/MissionVission'
+import TheRubousJourney from '../components/aboutus/TheRubousJourney'
+import MissionVision from '../components/aboutus/MissionVision'
 import Values from '../components/aboutus/Values'
 import WhyCompanies from '../components/aboutus/WhyCompanies'
 
@@ -13,7 +13,7 @@ const AboutUs = () => {
       <Navbar/>
       <AboutHeader/>
       <StatsSection/>
-      <TheRobousJourney/>
+      <TheRubousJourney/>
       <MissionVision/>
       <Values/>
       <WhyCompanies/>
