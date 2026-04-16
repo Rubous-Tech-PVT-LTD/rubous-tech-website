@@ -21,6 +21,7 @@
   --animate-glow-pulse: glow-pulse 3s infinite ease-in-out;
   --animate-marquee: marquee 30s linear infinite;
 
+  --shadow-primary: 0 25px 50px -12px #00000040;
   @keyframes glow-pulse {
     0%, 100% { opacity: 0.3; transform: scale(1); }
     50% { opacity: 0.6; transform: scale(1.1); }
