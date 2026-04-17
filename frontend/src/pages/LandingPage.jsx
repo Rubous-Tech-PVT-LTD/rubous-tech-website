@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-background text-navy selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen bg-background text-slate-100 selection:bg-primary/20 selection:text-primary">
       <Navbar />
       <main>
         <Hero />
@@ -23,7 +23,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Experience the Automation</h2>
-              <p className="text-lg text-navy/60 font-medium">
+              <p className="text-lg text-slate-300 font-medium">
                 Select a time below to see our AI booking system in action. 
                 Experience how seamless your calendar management could be.
               </p>
@@ -42,7 +42,7 @@ const LandingPage = () => {
         {/* Simple Trust Section */}
         <section className="py-20 bg-primary/5 border-y border-primary/10">
           <div className="container mx-auto px-6 text-center">
-            <p className="text-navy/60 font-bold uppercase tracking-widest text-sm mb-10">Trusted by modern firms worldwide</p>
+            <p className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-10">Trusted by modern firms worldwide</p>
             <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
               <span className="text-2xl font-bold">TechFlow</span>
               <span className="text-2xl font-bold">NexusAI</span>
