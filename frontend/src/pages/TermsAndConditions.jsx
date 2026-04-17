@@ -6,7 +6,7 @@ const termsSections = [
   {
     title: 'Acceptance of Terms',
     points: [
-      'By using Rubous Tech services, you agree to these Terms and Conditions.',
+      'By using Rubous Tech services, you agree to these Terms of Service.',
       'If you do not agree with these terms, please discontinue use of the platform.',
       'These terms apply to all visitors, clients, and users of our website and services.'
     ]
@@ -82,13 +82,13 @@ const TermsAndConditions = () => {
           <div className="max-w-4xl mx-auto">
             <div className="mb-12 text-center">
               <p className="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-primary mb-4">Legal</p>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">Terms and Conditions</h1>
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">Terms of Service</h1>
               <p className="text-navy/60 font-medium text-lg">Effective Date: April 16, 2026</p>
             </div>
 
             <div className="bg-white/90 backdrop-blur rounded-3xl border border-navy/10 shadow-xl p-7 md:p-10 space-y-10">
               <p className="text-base md:text-lg text-navy/75 leading-relaxed">
-                These Terms and Conditions govern your access to and use of Rubous Tech services,
+                These Terms of Service govern your access to and use of Rubous Tech services,
                 website features, and project engagement workflows.
               </p>
 
