@@ -1,5 +1,4 @@
 const Career = require('../models/Career');
-const mongoose = require('mongoose');
 
 // @desc    Get all careers page data
 // @route   GET /api/careers
@@ -38,14 +37,7 @@ exports.getCareerById = async (req, res) => {
   try {
     const { jobId } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(jobId)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid job ID format. A valid MongoDB ObjectId is required.'
-      });
-    }
-
-    const job = await Career.findOne({ _id: jobId, isActive: true }).lean();
+    const job = await Career.findOne({ id: jobId.toLowerCase(), isActive: true }).lean();
 
     if (!job) {
       return res.status(404).json({

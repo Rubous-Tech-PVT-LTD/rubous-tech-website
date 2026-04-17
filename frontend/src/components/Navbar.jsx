@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
@@ -32,9 +33,15 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="nav-link">
-              {link.name}
-            </a>
+            link.href.startsWith('/') ? (
+              <Link key={link.name} to={link.href} className="nav-link">
+                {link.name}
+              </Link>
+            ) : (
+              <a key={link.name} href={link.href} className="nav-link">
+                {link.name}
+              </a>
+            )
           ))}
           <a href="#contact" className="btn btn-primary px-5 py-2 text-sm">
             Contact Us
@@ -51,14 +58,25 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-6 flex flex-col items-center gap-6 border-t animate-fade-in">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-lg font-medium text-navy hover:text-primary"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </a>
+            link.href.startsWith('/') ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-lg font-medium text-navy hover:text-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-lg font-medium text-navy hover:text-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            )
           ))}
           <a href="#contact" className="btn btn-primary w-[80%]" onClick={() => setIsOpen(false)}>
             Contact Us
