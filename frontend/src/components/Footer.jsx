@@ -78,7 +78,7 @@ const Footer = () => {
           </p>
           <div className="flex gap-8">
             <Link to="/privacy-policy" className="text-white/40 hover:text-white text-sm transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="text-white/40 hover:text-white text-sm transition-colors">Terms of Service</Link>
+            <Link to="/terms-and-conditions" className="text-white/40 hover:text-white text-sm transition-colors">Terms and Conditions</Link>
           </div>
         </div>
       </div>
