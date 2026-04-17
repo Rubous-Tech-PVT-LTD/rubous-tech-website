@@ -93,6 +93,7 @@ const Pricing = () => {
           <p className="text-lg text-navy/60 font-medium mb-10">
             No hidden fees. Choose the plan that fits your current business scale.
           </p>
+        </div>
 
         {loading ? (
           <div className="max-w-6xl mx-auto py-16 flex items-center justify-center gap-3 text-navy/60">
