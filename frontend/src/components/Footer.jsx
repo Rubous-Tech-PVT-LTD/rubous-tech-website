@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageSquare, Share2, Globe, Mail, MapPin, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -76,8 +77,8 @@ const Footer = () => {
             &copy; 2026 Rubous Tech Private Limited. All rights reserved.
           </p>
           <div className="flex gap-8">
-            <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">Terms of Service</a>
+            <Link to="/privacy-policy" className="text-white/40 hover:text-white text-sm transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="text-white/40 hover:text-white text-sm transition-colors">Terms and Conditions</Link>
           </div>
         </div>
       </div>

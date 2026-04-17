@@ -1,90 +1,86 @@
-import React from 'react';
-import { Check, Zap } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Check, Zap, Loader2, AlertCircle } from 'lucide-react';
 
-const PricingCard = ({ tier, price, description, features, highlighted, delay }) => (
+const PricingCard = ({ name, priceLabel, bestFor, popular, delay }) => (
   <div 
-    className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col fade-up ${highlighted ? 'bg-navy text-white shadow-2xl scale-105 z-10 border-4 border-primary' : 'bg-white text-navy border border-navy/10 hover:shadow-xl'}`}
+    className={`relative p-8 rounded-3xl transition-all duration-300 flex flex-col fade-up ${popular ? 'bg-navy text-white shadow-2xl scale-105 z-10 border-4 border-primary' : 'bg-white text-navy border border-navy/10 hover:shadow-xl'}`}
     style={{ animationDelay: delay }}
   >
-    {highlighted && (
+    {popular && (
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">
         Most Popular
       </div>
     )}
     
-    <h3 className="text-xl font-bold mb-2">{tier}</h3>
+    <h3 className="text-xl font-bold mb-2">{name}</h3>
     <div className="mb-4">
-      <span className="text-4xl font-bold">${price}</span>
-      <span className={highlighted ? 'text-white/60' : 'text-navy/60'}>/month</span>
+      <span className="text-4xl font-bold">{priceLabel}</span>
     </div>
-    <p className={`text-sm mb-8 font-medium ${highlighted ? 'text-white/70' : 'text-navy/60'}`}>
-      {description}
+    <p className={`text-sm mb-8 font-medium ${popular ? 'text-white/70' : 'text-navy/60'}`}>
+      {bestFor}
     </p>
     
     <div className="flex-grow space-y-4 mb-10">
-      {features.map((feature, index) => (
-        <div key={index} className="flex items-start gap-3">
-          <div className={`mt-1 p-0.5 rounded-full ${highlighted ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
-            <Check size={14} />
-          </div>
-          <span className="text-sm font-medium">{feature}</span>
+      <div className="flex items-start gap-3">
+        <div className={`mt-1 p-0.5 rounded-full ${popular ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+          <Check size={14} />
         </div>
-      ))}
+        <span className="text-sm font-medium">Custom quote based on project scope</span>
+      </div>
+      <div className="flex items-start gap-3">
+        <div className={`mt-1 p-0.5 rounded-full ${popular ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+          <Check size={14} />
+        </div>
+        <span className="text-sm font-medium">Discovery call and roadmap included</span>
+      </div>
     </div>
     
-    <button className={`btn w-full font-bold ${highlighted ? 'btn-primary' : 'btn-outline border-navy text-navy hover:bg-navy hover:text-white'}`}>
+    <button className={`btn w-full font-bold ${popular ? 'btn-primary' : 'btn-outline border-navy text-navy hover:bg-navy hover:text-white'}`}>
       Choose Plan
     </button>
   </div>
 );
 
 const Pricing = () => {
-  const plans = [
-    {
-      tier: 'Starter',
-      price: '29',
-      description: 'Perfect for freelancers and small business owners starting their journey.',
-      features: [
-        'Up to 100 bookings/mo',
-        'Email scheduling',
-        'Google Calendar integration',
-        'Standard dashboard',
-        'Email support'
-      ],
-      highlighted: false,
-      delay: '0s'
-    },
-    {
-      tier: 'Pro',
-      price: '79',
-      description: 'The ultimate tool for growing teams who need advanced automation.',
-      features: [
-        'Unlimited bookings',
-        'AI Inquiry Handling',
-        'Outlook & iCal Sync',
-        'Advanced Analytics',
-        'Priority 24/7 support',
-        'Custom branding'
-      ],
-      highlighted: true,
-      delay: '0.1s'
-    },
-    {
-      tier: 'Enterprise',
-      price: '199',
-      description: 'Comprehensive features for large-scale operations and high-volume firms.',
-      features: [
-        'Multiple sub-accounts',
-        'Custom API access',
-        'Dedicated account manager',
-        'SLA & Security audit',
-        'On-site training',
-        'Custom AI training'
-      ],
-      highlighted: false,
-      delay: '0.2s'
-    }
-  ];
+  const [markets, setMarkets] = useState([]);
+  const [selectedMarketId, setSelectedMarketId] = useState('india');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchPricing = async () => {
+      try {
+        setLoading(true);
+        setError('');
+
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
+        const response = await fetch(`${apiBaseUrl}/api/pricing`);
+        const payload = await response.json();
+
+        if (!response.ok || !payload.success) {
+          throw new Error(payload.message || 'Failed to fetch pricing');
+        }
+
+        const marketList = Array.isArray(payload.data?.markets) ? payload.data.markets : [];
+        setMarkets(marketList);
+
+        if (marketList.length > 0) {
+          setSelectedMarketId(marketList[0].id);
+        }
+      } catch (fetchError) {
+        setError(fetchError.message || 'Failed to fetch pricing');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPricing();
+  }, []);
+
+  const selectedMarket = useMemo(
+    () => markets.find((market) => market.id === selectedMarketId) || markets[0],
+    [markets, selectedMarketId]
+  );
 
   return (
     <section id="pricing" className="py-20 bg-background relative overflow-hidden">
@@ -96,11 +92,50 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <PricingCard key={index} {...plan} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="max-w-6xl mx-auto py-16 flex items-center justify-center gap-3 text-navy/60">
+            <Loader2 size={20} className="animate-spin" />
+            <span className="font-semibold">Loading pricing...</span>
+          </div>
+        ) : error ? (
+          <div className="max-w-3xl mx-auto p-5 rounded-2xl border border-red-200 bg-red-50 text-red-700 flex items-center gap-3">
+            <AlertCircle size={18} />
+            <span>{error}</span>
+          </div>
+        ) : selectedMarket ? (
+          <>
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex gap-2 p-1.5 rounded-full bg-white border border-navy/10 shadow-sm">
+                {markets.map((market) => (
+                  <button
+                    key={market.id}
+                    type="button"
+                    onClick={() => setSelectedMarketId(market.id)}
+                    className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${selectedMarket.id === market.id ? 'bg-navy text-white' : 'text-navy/70 hover:text-navy'}`}
+                  >
+                    {market.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center mb-8">
+              <p className="text-sm font-semibold text-navy/60 uppercase tracking-widest">
+                Currency: {selectedMarket.currency}
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {selectedMarket.plans.map((plan, index) => (
+                <PricingCard key={plan.id || index} {...plan} delay={`${index * 0.1}s`} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="max-w-3xl mx-auto p-5 rounded-2xl border border-navy/10 bg-white text-navy/70 text-center">
+            No pricing data found.
+          </div>
+        )}
 
         <div className="mt-20 text-center fade-up" style={{ animationDelay: '0.3s' }}>
           <div className="glass-card inline-flex flex-col sm:flex-row items-center gap-6 p-6 sm:p-4 rounded-3xl border-primary/20">
