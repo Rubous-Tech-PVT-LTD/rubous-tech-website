@@ -28,7 +28,7 @@ const Hero = () => {
             Save Hours Every Day
           </h1>
           
-          <p className="text-base md:text-lg text-navy/70 mb-5 max-w-lg leading-relaxed font-medium">
+          <p className="text-base md:text-lg text-slate-300 mb-5 max-w-lg leading-relaxed font-medium">
             Rubous Tech transforms your scheduling nightmare into a seamless, 
             autonomous workflow. Stop managing calendars and start scaling 
             your business with AI-driven booking automation.
@@ -45,11 +45,11 @@ const Hero = () => {
           </div>
 
           <div className="mt-4 flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 text-navy/60 text-sm font-medium">
+            <div className="flex items-center gap-2 text-slate-400 text-sm font-medium">
               <CheckCircle size={18} className="text-primary" />
               No credit card required
             </div>
-            <div className="flex items-center gap-2 text-navy/60 text-sm font-medium">
+            <div className="flex items-center gap-2 text-slate-400 text-sm font-medium">
               <CheckCircle size={18} className="text-primary" />
               14-day free trial
             </div>
@@ -79,11 +79,11 @@ const Hero = () => {
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-                <CheckCircle className="text-navy" />
+                <CheckCircle className="text-white" />
               </div>
               <div>
-                <p className="text-sm font-bold">120+ Bookings</p>
-                <p className="text-xs text-navy/60">Automated this week</p>
+                <p className="text-sm font-bold text-white">120+ Bookings</p>
+                <p className="text-xs text-slate-400">Automated this week</p>
               </div>
             </div>
           </motion.div>

@@ -9,7 +9,7 @@ import WhyCompanies from '../components/aboutus/WhyCompanies'
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Navbar/>
       <AboutHeader/>
       <StatsSection/>

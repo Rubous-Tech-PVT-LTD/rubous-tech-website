@@ -5,8 +5,15 @@ const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
 
   useLayoutEffect(() => {
-    // Preserve native anchor behavior when navigating to hash targets.
-    if (hash) return;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
 
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [pathname, hash]);
