@@ -39,7 +39,6 @@
 @layer base {
   html {
     font-size: 13px; /* Mimics the 80% zoom look at 100% default */
-    scroll-behavior: smooth;
   }
 
   body {
@@ -63,7 +62,7 @@
   }
   
   .btn-secondary {
-    @apply bg-accent text-white hover:bg-accent-dark shadow-lg shadow-accent/20;
+    @apply bg-accent text-navy hover:bg-accent-dark shadow-lg shadow-accent/20;
   }
   
   .btn-outline {
@@ -71,11 +70,11 @@
   }
   
   .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl transition-all duration-300;
+    @apply bg-white/70 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl transition-all duration-300;
   }
 
   .nav-link {
-    @apply text-slate-300 hover:text-white font-medium transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full;
+    @apply text-navy/70 hover:text-primary font-medium transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full;
   }
 
   .bg-mesh {
