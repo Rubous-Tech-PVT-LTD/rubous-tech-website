@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import JobCard from '../components/careers/JobCard';
-import { Briefcase, Clock, ArrowRight } from 'lucide-react';
+import { Briefcase, Clock } from 'lucide-react';
 
 const Careers = () => {
   const [jobs, setJobs] = useState([]);
@@ -19,7 +19,7 @@ const Careers = () => {
         } else {
           setError(result.message);
         }
-      } catch (err) {
+      } catch {
         setError('Failed to fetch career opportunities. Please try again later.');
       } finally {
         setLoading(false);

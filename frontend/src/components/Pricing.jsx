@@ -65,10 +65,12 @@ const Pricing = () => {
         setMarkets(marketList);
 
         if (marketList.length > 0) {
-          // Keep preference if exists, else first market
-          if (!marketList.find(m => m.id === selectedMarketId)) {
-            setSelectedMarketId(marketList[0].id);
-          }
+          // Keep preference if it still exists, else fall back to the first market
+          setSelectedMarketId((currentSelectedMarketId) =>
+            marketList.find(m => m.id === currentSelectedMarketId)
+              ? currentSelectedMarketId
+              : marketList[0].id
+          );
         }
       } catch (fetchError) {
         setError(fetchError.message || 'Failed to fetch pricing');
