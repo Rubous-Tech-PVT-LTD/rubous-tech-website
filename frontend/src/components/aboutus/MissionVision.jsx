@@ -28,20 +28,20 @@ const MissionVision = () => {
             return (
               <div
                 key={index}
-                className="flex-1 bg-background  rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-md transition hover:scale-[1.02]"
+                className="flex-1 glass-card rounded-3xl p-8 md:p-10 hover-lift transition-all"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-xl mb-6">
+                <div className="w-12 h-12 flex items-center justify-center bg-primary/20 text-primary rounded-xl mb-6">
                   <Icon size={22} />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-semibold text-[#32294F] mb-4">
+                <h3 className="text-2xl font-semibold text-white mb-4">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-slate-400 leading-relaxed">
                   {item.description}
                 </p>
               </div>

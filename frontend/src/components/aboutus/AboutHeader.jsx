@@ -9,25 +9,25 @@ const AboutHeader = () => {
         <div className="flex flex-row items-center w-full">
           
           <div className="w-1/2">
-            <div className='text-primary bg-primary/20 py-1 text-base w-[112px] text-nowrap text-center rounded-full mb-6 px-4'>
+            <div className='text-accent bg-accent/10 py-1 text-base w-[112px] text-nowrap text-center rounded-full mb-6 px-4 font-bold'>
               OUR VISION
             </div>
 
-            <h1 className="font-bold text-[#32294F] text-7xl max-w-[510px] mb-8">
-              We’re Building the <span className='text-primary'>Future</span> of Automation
+            <h1 className="font-bold text-white text-7xl max-w-[510px] mb-8">
+              We’re Building the <span className='text-gradient'>Future</span> of Automation
             </h1>
 
-            <p className="text-base text-gray-600 mb-10 max-w-[510px]">
+            <p className="text-base text-muted mb-10 max-w-[510px]">
               Empowering enterprises through invisible intelligence. We
               create fluid, AI-driven engines that transform complex
               workflows into effortless outcomes.
             </p>
 
             <div className='flex items-center gap-4'>
-              <button className="bg-primary text-white py-2 px-6 rounded-full hover:bg-primary/80">
+              <button className="btn btn-primary">
                 Get Started
               </button>
-              <button className="border border-primary text-primary py-2 px-6 rounded-full hover:bg-primary/10">
+              <button className="btn btn-secondary">
                 Contact Us
               </button>
             </div>
@@ -39,7 +39,7 @@ const AboutHeader = () => {
               alt="aboutHero"
               width={505}
               height={505}
-              className='max-w-[505px] max-h-[505px] object-cover shadow-primary rounded-3xl'
+              className='max-w-[505px] max-h-[505px] object-cover shadow-2xl rounded-3xl'
             />
           </div>
 

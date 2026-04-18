@@ -2,6 +2,7 @@
 import React from 'react';
 import LandingPage from './pages/LandingPage';
 import AboutUs from './pages/AboutUs';
+import Careers from './pages/Careers';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import ScrollToTop from './utils/ScrollToTop';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/careers" element={<Careers />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       </Routes>
