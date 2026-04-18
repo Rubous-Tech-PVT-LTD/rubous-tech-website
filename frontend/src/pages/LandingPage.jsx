@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-background text-slate-100 selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />
