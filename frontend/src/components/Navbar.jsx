@@ -4,7 +4,19 @@ import { useState } from "react";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const navLinks = ["Home", "Services", "Pricing", "About"];
+    const navLinks = [{
+        name: "Home",
+        href: "#"
+    }, {
+        name: "Services",
+        href: "#"
+    }, {
+        name: "Pricing",
+        href: "#"
+    }, {
+        name: "About",
+        href: "#"
+    }];
 
     return (
         <nav className="w-full bg-gray-100 border-b border-gray-200">
@@ -20,11 +32,11 @@ const Navbar = () => {
                     {navLinks.map((link, index) => (
                         <li
                             key={index}
-                            className={`cursor-pointer hover:text-blue-600 relative ${link === "Home" ? "text-blue-600 font-medium" : ""
+                            className={`cursor-pointer hover:text-blue-600 relative ${link.name === "Home" ? "text-blue-600 font-medium" : ""
                                 }`}
                         >
-                            {link}
-                            {link === "Home" && (
+                            <a href={link.href}>{link.name}</a>
+                            {link.name === "Home" && (
                                 <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600"></span>
                             )}
                         </li>
@@ -38,7 +50,13 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden">
-                    <button onClick={() => setIsOpen(!isOpen)}>
+                    <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
+                        aria-label="Toggle navigation menu"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
                         {isOpen ? "Close" : "Menu"}
                     </button>
                 </div>
