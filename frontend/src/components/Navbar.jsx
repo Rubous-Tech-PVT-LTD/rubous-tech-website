@@ -1,89 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const navLinks = [{
+        name: "Home",
+        href: "#"
+    }, {
+        name: "Services",
+        href: "#"
+    }, {
+        name: "Pricing",
+        href: "#"
+    }, {
+        name: "About",
+        href: "#"
+    }];
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '/about' },
-  ];
+    return (
+        <nav className="w-full bg-gray-100 border-b border-gray-200">
+            <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-  return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-4' : 'bg-transparent py-6'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Rubous Tech" className="h-14 w-auto" />
-          <span className="text-xl font-bold text-navy hidden sm:block">Rubous Tech</span>
-        </div>
+                {/* Logo */}
+                <h1 className="text-blue-600 font-semibold text-lg">
+                    Rubous Tech
+                </h1>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            link.href.startsWith('/') ? (
-              <Link key={link.name} to={link.href} className="nav-link">
-                {link.name}
-              </Link>
-            ) : (
-              <a key={link.name} href={link.href} className="nav-link">
-                {link.name}
-              </a>
-            )
-          ))}
-          <a href="#contact" className="btn btn-primary px-5 py-2 text-sm">
-            Contact Us
-          </a>
-        </div>
+                {/* Desktop Menu */}
+                <ul className="hidden md:flex items-center gap-8 text-sm text-gray-600">
+                    {navLinks.map((link, index) => (
+                        <li
+                            key={index}
+                            className={`cursor-pointer hover:text-blue-600 relative ${link.name === "Home" ? "text-blue-600 font-medium" : ""
+                                }`}
+                        >
+                            <a href={link.href}>{link.name}</a>
+                            {link.name === "Home" && (
+                                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600"></span>
+                            )}
+                        </li>
+                    ))}
+                </ul>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-navy" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+                {/* Desktop Button */}
+                <button className="hidden md:block bg-blue-600 text-white text-sm px-4 py-2 rounded-md shadow hover:bg-blue-700 transition">
+                    Get Started
+                </button>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-6 flex flex-col items-center gap-6 border-t animate-fade-in">
-          {navLinks.map((link) => (
-            link.href.startsWith('/') ? (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-lg font-medium text-navy hover:text-primary"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ) : (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-lg font-medium text-navy hover:text-primary"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </a>
-            )
-          ))}
-          <a href="#contact" className="btn btn-primary w-[80%]" onClick={() => setIsOpen(false)}>
-            Contact Us
-          </a>
-        </div>
-      )}
-    </nav>
-  );
+                {/* Mobile Menu Button */}
+                <div className="md:hidden">
+                    <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
+                        aria-label="Toggle navigation menu"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        {isOpen ? "Close" : "Menu"}
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className="md:hidden bg-white border-t border-gray-200 px-4 pb-4">
+                    <ul className="flex flex-col gap-4 mt-3 text-gray-600">
+                        {navLinks.map((link, index) => (
+                            <li
+                                key={index}
+                                className={`cursor-pointer ${link === "Home" ? "text-blue-600 font-medium" : ""
+                                    }`}
+                            >
+                                {link}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-md">
+                        Get Started
+                    </button>
+                </div>
+            )}
+        </nav>
+    );
 };
 
 export default Navbar;
