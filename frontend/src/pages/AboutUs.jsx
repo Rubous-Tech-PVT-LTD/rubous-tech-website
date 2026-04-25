@@ -10,7 +10,7 @@ import WhyCompanies from '../components/aboutus/WhyCompanies'
 const AboutUs = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <AboutHeader/>
       <StatsSection/>
       <TheRubousJourney/>
