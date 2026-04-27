@@ -1,89 +1,105 @@
-import React from 'react';
-import { MessageSquare, Share2, Globe, Mail, MapPin, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
-const Footer = () => {
+ const Footer = () => {
   return (
-    <footer className="bg-navy text-white pt-20 pb-10">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Rubous Tech" className="h-14 w-auto brightness-0 invert" />
-              <span className="text-xl font-bold">Rubous Tech</span>
-            </div>
-            <p className="text-white/60 leading-relaxed font-medium">
-              Revolutionizing the digital landscape with intelligent, 
-              AI-driven booking automation solutions. Empowering businesses 
-              to focus on growth, not schedules.
+    <footer className="bg-[#0b1f3a] text-gray-300 pt-14 pb-6">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* TOP GRID */}
+        <div className="grid md:grid-cols-4 gap-10">
+          
+          {/* LOGO + DESC */}
+          <div>
+            <h2 className="text-white text-lg font-semibold mb-3">
+              Rubous Tech
+            </h2>
+            <p className="text-sm text-gray-400 mb-6">
+              Revolutionizing the digital landscape with intelligent,
+              AI-driven automation solutions.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
-                <MessageSquare size={20} />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
-                <Share2 size={20} />
-              </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
-                <Globe size={20} />
-              </a>
+
+            {/* Social Icons */}
+            <div className="flex gap-3">
+              <div className="w-9 h-9 flex items-center justify-center border border-gray-600 rounded-full hover:bg-blue-600 hover:border-blue-600 transition cursor-pointer">
+                💬
+              </div>
+              <div className="w-9 h-9 flex items-center justify-center border border-gray-600 rounded-full hover:bg-blue-600 hover:border-blue-600 transition cursor-pointer">
+                🔗
+              </div>
+              <div className="w-9 h-9 flex items-center justify-center border border-gray-600 rounded-full hover:bg-blue-600 hover:border-blue-600 transition cursor-pointer">
+                🌐
+              </div>
             </div>
           </div>
 
+          {/* SOLUTION */}
           <div>
-            <h4 className="text-lg font-bold mb-8">Solution</h4>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Booking Automation</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">AI Inquiry Handler</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Calendar Sync</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Enterprise Tools</a></li>
+            <h3 className="text-white font-medium mb-4">Solution</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="/booking" className="hover:text-white">Booking Automation</a></li>
+              <li><a href="/ai-handler" className="hover:text-white">AI Inquiry Handler</a></li>
+              <li><a href="/calendar" className="hover:text-white">Calendar Sync</a></li>
+              <li><a href="/enterprise" className="hover:text-white">Enterprise Tools</a></li>
             </ul>
           </div>
 
+          {/* COMPANY */}
           <div>
-            <h4 className="text-lg font-bold mb-8">Company</h4>
-            <ul className="space-y-4">
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Success Stories</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Blog</a></li>
+            <h3 className="text-white font-medium mb-4">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="/about" className="hover:text-white">About Us</a></li>
+              <li><a href="/case-studies" className="hover:text-white">Success Stories</a></li>
+              <li><a href="/careers" className="hover:text-white">Careers</a></li>
+              <li><a href="/blog" className="hover:text-white">Blog</a></li>
             </ul>
           </div>
 
+          {/* CONTACT */}
           <div>
-            <h4 className="text-lg font-bold mb-8">Contact</h4>
-            <ul className="space-y-6">
-              <li className="flex gap-3 text-white/60">
-                <Mail size={18} className="text-primary shrink-0" />
-                <span className="text-sm">info@ruboustech.com</span>
+            <h3 className="text-white font-medium mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-2">
+                <Mail size={16} className="text-blue-500" />
+                <a href="mailto:hello@ruboustech.com" className="hover:text-white">
+                  hello@ruboustech.com
+                </a>
               </li>
-              <li className="flex gap-3 text-white/60">
-                <Phone size={18} className="text-primary shrink-0" />
-                <span className="text-sm">+1 (555) 123-4567</span>
+              <li className="flex items-center gap-2">
+                <Phone size={16} className="text-blue-500" />
+                <a href="tel:+15550001234" className="hover:text-white">
+                  +1 (555) 000-1234
+                </a>
               </li>
-              <li className="flex gap-3 text-white/60">
-                <MapPin size={18} className="text-primary shrink-0" />
-                <span className="text-sm">
-                  1st Floor, Chandrabani Road, <br />
-                  Majra, Dehradun, UK 248171
+              <li className="flex items-start gap-2">
+                <MapPin size={16} className="text-blue-500 mt-1" />
+                <span>
+                  123 Innovation Drive,<br />
+                  Silicon Valley, CA 94025
                 </span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-white/40 text-sm">
-            &copy; 2026 Rubous Tech Private Limited. All rights reserved.
-          </p>
-          <div className="flex gap-8">
-            <Link to="/privacy-policy" className="text-white/40 hover:text-white text-sm transition-colors">Privacy Policy</Link>
-            <Link to="/terms-and-conditions" className="text-white/40 hover:text-white text-sm transition-colors">Terms and Conditions</Link>
+        {/* DIVIDER */}
+        <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+          
+          <p>© 2026 Rubous Tech Private Limited. All rights reserved.</p>
+
+          <div className="flex gap-6 mt-3 md:mt-0">
+            <a href="/privacy" className="hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="hover:text-white">
+              Terms and Conditions
+            </a>
           </div>
         </div>
+
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
