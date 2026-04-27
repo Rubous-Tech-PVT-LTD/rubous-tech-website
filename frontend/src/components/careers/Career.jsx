@@ -1,5 +1,5 @@
 import React from "react";
-import WhyJoinUs from "./WhyJOinUs";
+import WhyJoinUs from "./WhyJoinUs";
 import OurCulture from "./OurCulture";
 import OpenPositions from "./OpenPosition";
 import StartJourney from "./StartJourney";
