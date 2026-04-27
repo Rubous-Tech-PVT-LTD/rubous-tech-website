@@ -1,3 +1,4 @@
+import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 const Navbar = () => {
@@ -24,7 +25,7 @@ const Navbar = () => {
 
     return (
         <nav className='w-full bg-gray-100 border-b border-gray-200'>
-            <div className='max-w-7xl mx-auto px-4 py-3 flex items-center justify-between'>
+            <div className='max-w-297 container mx-auto px-6 py-3 flex items-center justify-between'>
                 {/* Logo */}
                 <h1 className='text-blue-600 font-semibold text-lg'>Rubous Tech</h1>
 
@@ -37,7 +38,7 @@ const Navbar = () => {
                         >
                             <a href={link.href}>{link.name}</a>
                             {link.name === 'Home' && (
-                                <span className='absolute -bottom-1 left-0 w-full h-[2px] bg-blue-600'></span>
+                                <span className='absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600'></span>
                             )}
                         </li>
                     ))}
@@ -57,7 +58,7 @@ const Navbar = () => {
                         aria-label='Toggle navigation menu'
                         onClick={() => setIsOpen(!isOpen)}
                     >
-                        {isOpen ? 'Close' : 'Menu'}
+                        {isOpen ? <X /> : <Menu />}
                     </button>
                 </div>
             </div>
