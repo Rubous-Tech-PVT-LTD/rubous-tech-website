@@ -17,7 +17,12 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:3000'], // Frontend dev servers
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
@@ -28,6 +33,7 @@ if (process.env.NODE_ENV === 'development') {
 const bookingRoutes = require('./routes/bookingRoutes');
 const pricingRoutes = require('./routes/pricingRoutes');
 const careerRoutes = require('./routes/careerRoutes');
+const serviceRoutes = require('./routes/serviceRoutes');
 
 // Basic Route
 app.get('/', (req, res) => {
@@ -38,6 +44,7 @@ app.get('/', (req, res) => {
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/pricing', pricingRoutes);
 app.use('/api/careers', careerRoutes);
+app.use('/api/services', serviceRoutes);
 
 const PORT = process.env.PORT || 5001;
 const NODE_ENV = process.env.NODE_ENV || 'development';

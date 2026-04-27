@@ -46,6 +46,10 @@ const CareerSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
+  benefits: {
+    type: [String],
+    default: []
+  },
   postedAt: {
     type: Date,
     default: Date.now

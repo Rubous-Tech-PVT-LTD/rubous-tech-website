@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -7,19 +8,28 @@ const Navbar = () => {
     const navLinks = [
         {
             name: 'Home',
-            href: '#',
+            href: '/',
+            route: true,
         },
         {
             name: 'Services',
-            href: '#',
+            href: '/services',
+            route: true,
         },
         {
             name: 'Pricing',
-            href: '#',
+            href: '/pricing',
+            route: true,
+        },
+        {
+            name: 'Careers',
+            href: '/careers',
+            route: true,
         },
         {
             name: 'About',
-            href: '#',
+            href: '/about',
+            route: true,
         },
     ]
 
@@ -34,11 +44,17 @@ const Navbar = () => {
                     {navLinks.map((link) => (
                         <li
                             key={link.name}
-                            className={`cursor-pointer hover:text-blue-600 relative ${link.name === 'Home' ? 'text-blue-600 font-medium' : ''}`}
+                            className='cursor-pointer hover:text-blue-600 relative'
                         >
-                            <a href={link.href}>{link.name}</a>
-                            {link.name === 'Home' && (
-                                <span className='absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600'></span>
+                            {link.route ? (
+                                <NavLink
+                                    to={link.href}
+                                    className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : ''}
+                                >
+                                    {link.name}
+                                </NavLink>
+                            ) : (
+                                <a href={link.href}>{link.name}</a>
                             )}
                         </li>
                     ))}
@@ -70,9 +86,19 @@ const Navbar = () => {
                         {navLinks.map((link) => (
                             <li
                                 key={link.name}
-                                className={`cursor-pointer ${link.name === 'Home' ? 'text-blue-600 font-medium' : ''}`}
+                                    className='cursor-pointer'
                             >
-                                <a href={link.href}>{link.name}</a>
+                                    {link.route ? (
+                                        <NavLink
+                                            to={link.href}
+                                            className={({ isActive }) => isActive ? 'text-blue-600 font-medium' : ''}
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {link.name}
+                                        </NavLink>
+                                    ) : (
+                                        <a href={link.href}>{link.name}</a>
+                                    )}
                             </li>
                         ))}
                     </ul>
