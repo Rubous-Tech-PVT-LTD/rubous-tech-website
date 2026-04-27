@@ -43,7 +43,6 @@ const ContactSection = () => {
     e.preventDefault();
 
     if (validate()) {
-      console.log("Form Data:", form);
       setSuccess(true);
 
       // Reset form

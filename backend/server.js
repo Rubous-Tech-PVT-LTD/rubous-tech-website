@@ -17,8 +17,12 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
+const allowedOrigins = process.env.CORS_ORIGIN 
+  ? process.env.CORS_ORIGIN.split(',') 
+  : ['http://localhost:5173', 'http://localhost:3000'];
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'], // Frontend dev servers
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -49,6 +53,10 @@ app.use('/api/services', serviceRoutes);
 const PORT = process.env.PORT || 5001;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${NODE_ENV} mode on port ${PORT}`.yellow.bold);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running in ${NODE_ENV} mode on port ${PORT}`.yellow.bold);
+  });
+}
+
+module.exports = app;
