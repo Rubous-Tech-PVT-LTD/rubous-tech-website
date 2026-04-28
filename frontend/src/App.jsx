@@ -1,25 +1,22 @@
-import ContactSection from './components/ContactSection'
-import CTASection from './components/CTASection'
 import Footer from './components/Footer'
-import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-import Pricing from './components/Pricing'
-import Solutions from './components/Solutions'
-import Trusted from './components/Trusted'
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import LandingPage from './pages/LandingPage'
+import AboutUs from './pages/AboutUs'
 
 function App() {
 
   return (
-    <>
-     <Navbar />
-     <Hero />
-     <Trusted />
-     <Solutions />
-     <ContactSection />
-     <Pricing />
-     <CTASection/>
-     <Footer />
-    </>
+      <BrowserRouter>
+      <Navbar />
+      <Routes>
+<Route path='/' element={<LandingPage />} />
+<Route path='/about' element={<AboutUs />} />
+      </Routes>
+      <Footer />  
+    </BrowserRouter >
+
   )
 }
 

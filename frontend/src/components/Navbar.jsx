@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -7,19 +8,19 @@ const Navbar = () => {
     const navLinks = [
         {
             name: 'Home',
-            href: '#',
+            href: '/',
         },
         {
             name: 'Services',
-            href: '#',
+            href: '/services',
         },
         {
             name: 'Pricing',
-            href: '#',
+            href: '/pricing',
         },
         {
             name: 'About',
-            href: '#',
+            href: '/about',
         },
     ]
 
@@ -36,7 +37,7 @@ const Navbar = () => {
                             key={link.name}
                             className={`cursor-pointer hover:text-blue-600 relative ${link.name === 'Home' ? 'text-blue-600 font-medium' : ''}`}
                         >
-                            <a href={link.href}>{link.name}</a>
+                            <Link to={link.href}>{link.name}</Link>
                             {link.name === 'Home' && (
                                 <span className='absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600'></span>
                             )}
