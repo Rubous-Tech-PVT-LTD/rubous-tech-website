@@ -14,6 +14,7 @@ import MissionVision from './components/aboutus/MissionVision'
 import Values from './components/aboutus/Values'
 import WhyCompanies from './components/aboutus/WhyCompanies'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import OurProcess from './pages/OurProcess'
 
 const HomePage = () => (
   <>
@@ -36,8 +37,7 @@ const ServicesPage = () => (
 
 const PricingPage = () => (
   <>
-    <Pricing />
-    <Footer />
+    <OurProcess />
   </>
 )
 
