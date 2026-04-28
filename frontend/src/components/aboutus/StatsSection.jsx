@@ -1,37 +1,34 @@
 import React from "react";
 
 const stats = [
-  { value: "500+", label: "Businesses Powered" },
-  { value: "10k+", label: "Tasks Daily" },
-  { value: "98%", label: "Satisfaction Rate" },
+  { value: "5K+", label: "CLIENTS" },
+  { value: "10K+", label: "AUTOMATIONS" },
+  { value: "50+", label: "PROJECTS" },
+  { value: "4.9", label: "RATING" },
 ];
 
 const StatsSection = () => {
   return (
-    <section className="bg-primary/10 py-16">
-      <div className="container mx-auto px-5">
-
-
-        {/* Cards */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
+    <div className="w-full bg-[#eef4ff] py-20 flex justify-center">
+      <div className="w-full max-w-5xl px-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((item, index) => (
             <div
               key={index}
-              className="flex-1 bg-background rounded-2xl py-8 px-6 text-center shadow-sm hover:shadow-md transition"
+              className="bg-gray-100 rounded-2xl py-6 flex flex-col items-center justify-center shadow-sm"
             >
-              <h3 className="text-4xl md:text-5xl font-bold text-indigo-600 mb-2">
+              <h2 className="text-blue-600 text-2xl sm:text-3xl font-bold">
                 {item.value}
-              </h3>
-              <p className="text-gray-600 text-sm md:text-base">
+              </h2>
+              <p className="text-gray-500 text-xs sm:text-sm tracking-wide mt-1">
                 {item.label}
               </p>
             </div>
           ))}
         </div>
-
       </div>
-    </section>
+    </div>
   );
-};
+}
 
 export default StatsSection;

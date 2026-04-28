@@ -1,11 +1,11 @@
 import React from "react";
-import WhyJoinUs from "./WhyJOinUs";
+import WhyJoinUs from "./WhyJoinUs";
 import OurCulture from "./OurCulture";
 import OpenPositions from "./OpenPosition";
 import StartJourney from "./StartJourney";
 import Footer from "../Footer";
 
-export default function JoinOurTeam() {
+export default function CareerHero() {
   return (
     <>
       <div className="bg-[#f8f9ff] py-16 overflow-hidden">
@@ -48,11 +48,7 @@ export default function JoinOurTeam() {
           </div>
         </div>
       </div>
-      <WhyJoinUs />
-      <OurCulture />
-      <OpenPositions />
-      <StartJourney />
-      <Footer />
+
     </>
   );
 }

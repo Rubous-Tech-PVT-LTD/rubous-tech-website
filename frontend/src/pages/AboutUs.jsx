@@ -1,22 +1,21 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import AboutHeader from '../components/aboutus/AboutHeader'
 import StatsSection from '../components/aboutus/StatsSection'
-import TheRubousJourney from '../components/aboutus/TheRubousJourney'
-import MissionVision from '../components/aboutus/MissionVision'
-import Values from '../components/aboutus/Values'
-import WhyCompanies from '../components/aboutus/WhyCompanies'
+import OurMission from '../components/aboutus/OurMission'
+import KeyFeatures from '../components/aboutus/KeyFeatures'
+import MeetVisionaries from '../components/aboutus/MeetVisionaries'
+import AboutCta from '../components/aboutus/AboutCta'
+
 
 const AboutUs = () => {
   return (
     <div>
-      <Navbar />
-      <AboutHeader/>
-      <StatsSection/>
-      <TheRubousJourney/>
-      <MissionVision/>
-      <Values/>
-      <WhyCompanies/>
+      <AboutHeader />
+      <StatsSection />
+      <OurMission />
+      <KeyFeatures />
+      <MeetVisionaries />
+      <AboutCta />
     </div>
   )
 }

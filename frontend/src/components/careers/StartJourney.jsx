@@ -147,8 +147,8 @@ export default function StartYourJourney() {
         </div>
 
         {/* ── BLUE CTA CARD ── */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl w-full max-w-4xl mx-auto mt-12 p-14 text-center shadow-lg">
-          <h3 className="text-3xl font-semibold text-white mb-4">
+        <div className="bg-linear-to-r from-blue-600 to-blue-500 rounded-2xl w-full max-w-4xl mx-auto mt-12 p-14 text-center shadow-lg">
+          <h3 className=" text-3xl md:text-4xl font-bold text-white mb-4">
             Didn't find a role?
           </h3>
           <p className="text-base text-blue-100 leading-relaxed mb-8 max-w-2xl mx-auto">
