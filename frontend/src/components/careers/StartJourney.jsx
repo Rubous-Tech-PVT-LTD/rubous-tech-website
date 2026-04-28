@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 // Add to index.html:
 // <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -29,14 +30,48 @@ const UploadIcon = () => (
 );
 
 export default function StartYourJourney() {
+  const [positions, setPositions] = useState([]);
+  const [positionsLoading, setPositionsLoading] = useState(true);
+  const [positionsError, setPositionsError] = useState(null);
   const [form, setForm] = useState({
     fullName: "",
     email: "",
-    position: "Frontend Developer",
+    position: "",
     coverMessage: "",
   });
   const [dragOver, setDragOver] = useState(false);
   const [fileName, setFileName] = useState(null);
+
+  useEffect(() => {
+    const fetchPositions = async () => {
+      try {
+        setPositionsLoading(true);
+        setPositionsError(null);
+
+        const response = await fetch('/api/careers');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const responseJson = await response.json();
+        const careers = Array.isArray(responseJson.data) ? responseJson.data : [];
+        const activePositions = careers
+          .map((career) => career?.title)
+          .filter(Boolean);
+
+        setPositions(activePositions);
+      } catch (error) {
+        console.error('Error fetching career positions:', error);
+        setPositions([]);
+        setPositionsError('Unable to load positions right now.');
+      } finally {
+        setPositionsLoading(false);
+      }
+    };
+
+    fetchPositions();
+  }, []);
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -88,17 +123,29 @@ export default function StartYourJourney() {
 
           {/* Desired Position */}
           <Field label="Desired Position">
-            <select
-              name="position"
-              value={form.position}
-              onChange={handleChange}
-              className={`${inputClass} appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7799' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")] bg-no-repeat bg-[right_14px_center] pr-10 cursor-pointer`}
-            >
-              <option>Frontend Developer</option>
-              <option>Backend Developer</option>
-              <option>Automation Engineer</option>
-              <option>Marketing Intern</option>
-            </select>
+            <div className="relative">
+              <select
+                name="position"
+                value={form.position}
+                onChange={handleChange}
+                disabled={positionsLoading}
+                className={`${inputClass} appearance-none bg-no-repeat bg-[right_14px_center] pr-10 cursor-pointer`}
+              >
+                <option value="">Select a position</option>
+                {positions.map((position) => (
+                  <option key={position} value={position}>
+                    {position}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+            </div>
+            {positionsLoading && (
+              <p className="mt-2 text-sm text-gray-500">Loading positions...</p>
+            )}
+            {positionsError && (
+              <p className="mt-2 text-sm text-red-500">{positionsError}</p>
+            )}
           </Field>
 
           {/* Resume Upload */}

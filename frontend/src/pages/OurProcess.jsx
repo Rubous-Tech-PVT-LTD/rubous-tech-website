@@ -2,7 +2,7 @@ import {
   LayoutGrid, Zap, MessageSquare, ArrowUpToLine,
   SunMedium, ArrowLeftRight, Users, List, Cloud, Database,
 } from "lucide-react";
-import Footer from "../components/Footer";
+
  
 // ─── Data ───────────────────────────────────────────────────────────────────
  
@@ -303,7 +303,7 @@ export default function OurProcess() {
       <RoadToAutomation />
       <FeaturesSection />
       <CTAAndFAQ />
-      <Footer />
+      
     </>
   );
 }

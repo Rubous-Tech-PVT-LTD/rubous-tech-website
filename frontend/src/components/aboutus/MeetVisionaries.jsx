@@ -1,34 +1,53 @@
-import React from "react";
-
-const team = [
-  {
-    name: "David Chen",
-    role: "Chief Architect",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-  },
-  {
-    name: "Sarah Jenkins",
-    role: "Head of Automation",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-  },
-  {
-    name: "Marcus Thorne",
-    role: "Lead Developer",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "UX Orchestrator",
-    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
-  },
-];
+import React, { useEffect, useState } from "react";
 
 const MeetVisionaries = () => {
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/team');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const responseJson = await response.json();
+
+        if (responseJson.success && Array.isArray(responseJson.data)) {
+          const mappedTeam = responseJson.data.map((member) => ({
+            name: member.name,
+            role: member.role,
+            img: member.image,
+            bio: member.bio,
+            email: member.email,
+            socialLinks: member.socialLinks,
+          }));
+
+          setTeam(mappedTeam);
+        } else {
+          throw new Error('Invalid response format from API');
+        }
+      } catch (err) {
+        console.error('Error fetching team members:', err);
+        setError(err.message);
+        setTeam([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
+
   return (
     <section className="w-full bg-[#eef4ff] py-16 flex justify-center">
       <div className="max-w-297 px-6 w-full">
-        
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
           <div>
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
@@ -39,44 +58,50 @@ const MeetVisionaries = () => {
             </p>
           </div>
 
-          <a
-            href="#"
-            className="text-blue-600 text-sm mt-4 md:mt-0 hover:underline"
-          >
+          <a href="#" className="text-blue-600 text-sm mt-4 md:mt-0 hover:underline">
             View All team →
           </a>
         </div>
 
-        {/* Cards */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((member, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 rounded-2xl p-4 shadow-sm hover:shadow-md transition"
-            >
-              {/* Image */}
-              <div className="rounded-xl overflow-hidden mb-4">
-                <img
-                  src={`${member.img}?auto=format&fit=crop&w=400&q=80`}
-                  alt={member.name}
-                  className="w-full h-56 object-cover"
-                />
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          </div>
+        )}
+
+        {error && !loading && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+            <p className="text-red-600 mb-2">Unable to load team members</p>
+            <p className="text-red-500 text-sm">{error}</p>
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="bg-gray-50 rounded-2xl p-4 shadow-sm hover:shadow-md transition"
+              >
+                <div className="rounded-xl overflow-hidden mb-4">
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-56 object-cover"
+                  />
+                </div>
+
+                <h3 className="text-gray-900 font-semibold text-sm">
+                  {member.name}
+                </h3>
+                <p className="text-blue-600 text-xs mt-1">{member.role}</p>
               </div>
-
-              {/* Info */}
-              <h3 className="text-gray-900 font-semibold text-sm">
-                {member.name}
-              </h3>
-              <p className="text-blue-600 text-xs mt-1">
-                {member.role}
-              </p>
-            </div>
-          ))}
-        </div>
-
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
-}
+};
 
 export default MeetVisionaries;
