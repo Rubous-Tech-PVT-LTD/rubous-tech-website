@@ -1,5 +1,6 @@
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/utils/ScrollToTop'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
@@ -18,7 +19,8 @@ function App() {
 <Route path='/our-process' element={<OurProcess />} />
 <Route path='/careers' element={<CareerPage />} />
       </Routes>
-      <Footer />  
+      <Footer />
+      <ScrollToTop />
 </>
   )
 }

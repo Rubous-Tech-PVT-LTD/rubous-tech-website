@@ -73,7 +73,7 @@ const solutions = [
 
 const Solutions = () => {
   return (
-    <section className="bg-[#f8f9ff] lg:py-32 md:py-20 py-16">
+    <section id="solutions" className="bg-[#f8f9ff] lg:py-32 md:py-20 py-16">
       <div className="max-w-297 mx-auto px-6 text-center">
         
         {/* Heading */}

@@ -1,17 +1,58 @@
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", href: "/", route: true },
-    { name: "Services", href: "/services", route: true },
-    { name: "Pricing", href: "/pricing", route: true },
+    { name: "Services", href: "#solutions", route: false, scrollTo: true },
+    { name: "Pricing", href: "#pricing", route: false, scrollTo: true },
     { name: "Careers", href: "/careers", route: true },
     { name: "About", href: "/about", route: true },
   ];
+
+  const handleScrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    
+    // If not on home page, navigate to home with hash
+    if (location.pathname !== '/') {
+      navigate('/' + sectionId);
+      setIsOpen(false);
+      return;
+    }
+    
+    // Smooth scroll to section
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    
+    // Close mobile menu if open
+    setIsOpen(false);
+  };
+
+  // Handle hash-based scrolling on page load
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        // Small delay to ensure DOM is fully loaded
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   return (
     <nav className="w-full bg-gray-100 border-b border-gray-200 relative">
@@ -28,14 +69,24 @@ const Navbar = () => {
               key={link.name}
               className="cursor-pointer hover:text-blue-600"
             >
-              <NavLink
-                to={link.href}
-                className={({ isActive }) =>
-                  isActive ? "text-blue-600 font-medium" : ""
-                }
-              >
-                {link.name}
-              </NavLink>
+              {link.scrollTo ? (
+                <a
+                  href={link.href}
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <NavLink
+                  to={link.href}
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600 font-medium" : ""
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>
@@ -71,15 +122,25 @@ const Navbar = () => {
         <ul className="flex flex-col gap-4 text-gray-600">
           {navLinks.map((link) => (
             <li key={link.name} className="cursor-pointer">
-              <NavLink
-                to={link.href}
-                className={({ isActive }) =>
-                  isActive ? "text-blue-600 font-medium" : ""
-                }
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </NavLink>
+              {link.scrollTo ? (
+                <a
+                  href={link.href}
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <NavLink
+                  to={link.href}
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600 font-medium" : ""
+                  }
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>
