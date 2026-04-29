@@ -1,7 +1,8 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
- const Footer = () => {
+const Footer = () => {
   return (
     <footer className="bg-[#0b1f3a] text-gray-300 pt-14 pb-6">
       <div className="max-w-7xl mx-auto px-6">
@@ -37,10 +38,10 @@ import { Mail, Phone, MapPin } from "lucide-react";
           <div>
             <h3 className="text-white font-medium mb-4">Solution</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/booking" className="hover:text-white">Booking Automation</a></li>
-              <li><a href="/ai-handler" className="hover:text-white">AI Inquiry Handler</a></li>
-              <li><a href="/calendar" className="hover:text-white">Calendar Sync</a></li>
-              <li><a href="/enterprise" className="hover:text-white">Enterprise Tools</a></li>
+              <li><NavLink to="/booking" className="hover:text-white">Booking Automation</NavLink></li>
+              <li><NavLink to="/ai-handler" className="hover:text-white">AI Inquiry Handler</NavLink></li>
+              <li><NavLink to="/calendar" className="hover:text-white">Calendar Sync</NavLink></li>
+              <li><NavLink to="/enterprise" className="hover:text-white">Enterprise Tools</NavLink></li>
             </ul>
           </div>
 
@@ -48,10 +49,10 @@ import { Mail, Phone, MapPin } from "lucide-react";
           <div>
             <h3 className="text-white font-medium mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/case-studies" className="hover:text-white">Success Stories</a></li>
-              <li><a href="/careers" className="hover:text-white">Careers</a></li>
-              <li><a href="/blog" className="hover:text-white">Blog</a></li>
+              <li><NavLink to="/about" className="hover:text-white">About Us</NavLink></li>
+              <li><NavLink to="/case-studies" className="hover:text-white">Success Stories</NavLink></li>
+              <li><NavLink to="/careers" className="hover:text-white">Careers</NavLink></li>
+              <li><NavLink to="/blog" className="hover:text-white">Blog</NavLink></li>
             </ul>
           </div>
 
@@ -85,15 +86,15 @@ import { Mail, Phone, MapPin } from "lucide-react";
         {/* DIVIDER */}
         <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           
-          <p>© 2026 Rubous Tech Private Limited. All rights reserved.</p>
+          <p> 2026 Rubous Tech Private Limited. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
-            <a href="/privacy" className="hover:text-white">
+            <NavLink to="/privacy" className="hover:text-white">
               Privacy Policy
-            </a>
-            <a href="/terms" className="hover:text-white">
+            </NavLink>
+            <NavLink to="/terms" className="hover:text-white">
               Terms and Conditions
-            </a>
+            </NavLink>
           </div>
         </div>
 

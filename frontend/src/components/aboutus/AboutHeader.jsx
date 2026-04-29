@@ -1,52 +1,60 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
 
-const AboutHeader = () => {
+const AboutHero = () => {
   return (
-    <div className="min-h-screen flex relative z-10">
-      <div className='max-w-[384px] max-h-96 w-full h-full bg-primary/20 right-10 top-7 blur-2xl rounded-full absolute -z-10 '></div>
-      <div className='max-w-[384px] max-h-96 w-full h-full bg-primary/20 right-[600px] bottom-5 blur-2xl rounded-full absolute -z-10 '></div>
-      <div className="container mx-auto px-5 flex grow items-center">
-        <div className="flex flex-row items-center w-full">
+    <section className="w-full min-h-[calc(100vh-60px)] bg-[#f3f3f3] flex items-center px-6 py-12">
+      <div className="max-w-297 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+        
+        {/* Left Content */}
+        <div className="space-y-6">
           
-          <div className="w-1/2">
-            <div className='text-accent bg-accent/10 py-1 text-base w-[112px] text-nowrap text-center rounded-full mb-6 px-4 font-bold'>
-              OUR VISION
-            </div>
-
-            <h1 className="font-bold text-white text-7xl max-w-[510px] mb-8">
-              We’re Building the <span className='text-gradient'>Future</span> of Automation
-            </h1>
-
-            <p className="text-base text-muted mb-10 max-w-[510px]">
-              Empowering enterprises through invisible intelligence. We
-              create fluid, AI-driven engines that transform complex
-              workflows into effortless outcomes.
-            </p>
-
-            <div className='flex items-center gap-4'>
-              <button className="btn btn-primary">
-                Get Started
-              </button>
-              <button className="btn btn-secondary">
-                Contact Us
-              </button>
-            </div>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold tracking-wide uppercase">
+            <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+            Intelligent Systems
           </div>
 
-          <div className='w-1/2 flex justify-end'>
+          {/* Heading */}
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-slate-900">
+            We Build{" "}
+            <span className="text-blue-600">Smart Automation</span>{" "}
+            Systems
+          </h1>
+
+          {/* Description */}
+          <p className="text-gray-500 text-base md:text-lg max-w-xl leading-relaxed">
+            Helping businesses save time and scale faster through Liquid
+            Architecture and orchestrated digital intelligence.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap items-center gap-6 pt-2">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition shadow-md">
+              Learn More
+            </button>
+
+            <Link
+              to="/our-process"
+              className="text-blue-600 font-semibold hover:text-blue-700 transition"
+            >
+              Our Process
+            </Link>
+          </div>
+        </div>
+
+        {/* Right Image */}
+        <div className="relative flex justify-center lg:justify-end">
+          <div className="relative bg-[#dfe3f0] rounded-[40px] p-4 rotate-[-4deg] shadow-lg max-w-md w-full">
             <img
               src="/aboutHero.webp"
-              alt="aboutHero"
-              width={505}
-              height={505}
-              className='max-w-[505px] max-h-[505px] object-cover shadow-2xl rounded-3xl'
+              alt="Smart automation system"
+              className="w-full rounded-4xl object-cover rotate-[4deg]"
             />
           </div>
-
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
 
-export default AboutHeader
+export default AboutHero;
