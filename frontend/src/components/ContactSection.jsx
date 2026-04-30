@@ -93,7 +93,7 @@ const ContactSection = () => {
               </label>
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder="Full Name"
                 value={form.name}
                 onChange={(e) =>
                   setForm({ ...form, name: e.target.value })
@@ -112,7 +112,7 @@ const ContactSection = () => {
               </label>
               <input
                 type="email"
-                placeholder="john@company.com"
+                placeholder="info@company.com"
                 value={form.email}
                 onChange={(e) =>
                   setForm({ ...form, email: e.target.value })

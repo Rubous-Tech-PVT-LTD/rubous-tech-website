@@ -3,7 +3,7 @@ import React from "react";
 const plans = [
   {
     name: "Starter",
-    price: "$499",
+    price: "$500-$1200",
     desc: "/mo",
     features: [
       "3 Core Automations",
@@ -15,7 +15,7 @@ const plans = [
   },
   {
     name: "Growth",
-    price: "$999",
+    price: "$1500-$4000",
     desc: "/mo",
     features: [
       "Unlimited Automations",
@@ -27,8 +27,8 @@ const plans = [
     highlight: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
+    name: "Premium",
+    price: "$5000-$15000+",
     desc: "",
     features: [
       "Dedicated Architect",

@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 const policySections = [
   {
@@ -55,56 +53,54 @@ const policySections = [
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background text-navy selection:bg-primary/20 selection:text-primary">
-      <Navbar />
+    <main className="min-h-screen bg-[#f8f9ff] py-16 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <span className="inline-block bg-blue-100 text-blue-600 text-xs font-semibold px-4 py-1 rounded-full mb-5 uppercase">
+            Legal
+          </span>
 
-      <main className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 -left-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+            Privacy Policy
+          </h1>
 
-        <section className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-12 text-center">
-              <p className="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-primary mb-4">Legal</p>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">Privacy Policy</h1>
-              <p className="text-navy/60 font-medium text-lg">
-                Effective Date: April 16, 2026
-              </p>
-            </div>
+          <p className="text-gray-500 mt-5 max-w-md mx-auto">
+            Effective Date: April 16, 2026
+          </p>
 
-            <div className="bg-white/90 backdrop-blur rounded-3xl border border-navy/10 shadow-xl p-7 md:p-10 space-y-10">
-              <p className="text-base md:text-lg text-navy/75 leading-relaxed">
-                Rubous Tech values your privacy. This Privacy Policy explains what information we collect,
-                how we use it, and how we protect it when you interact with our website and services.
-              </p>
+          <p className="text-gray-500 mt-5 max-w-2xl mx-auto">
+            Rubous Tech values your privacy. This Privacy Policy explains what information we collect,
+            how we use it, and how we protect it when you interact with our website and services.
+          </p>
+        </div>
 
-              {policySections.map((section) => (
-                <section key={section.title} className="space-y-4">
-                  <h2 className="text-2xl font-bold">{section.title}</h2>
-                  <ul className="space-y-3">
-                    {section.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3 text-navy/75 leading-relaxed">
-                        <span className="mt-2 h-2.5 w-2.5 rounded-full bg-primary shrink-0" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
+        <div className="mx-auto mt-12 max-w-4xl space-y-6">
+          {policySections.map((section) => (
+            <section
+              key={section.title}
+              className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-lg"
+            >
+              <h2 className="text-2xl font-bold text-gray-800">{section.title}</h2>
+              <ul className="mt-5 space-y-3">
+                {section.points.map((point) => (
+                  <li key={point} className="flex items-start gap-3 text-gray-500 leading-relaxed">
+                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-blue-600 shrink-0" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
 
-              <section className="pt-2 border-t border-navy/10">
-                <p className="text-sm text-navy/55 leading-relaxed">
-                  This policy may be updated from time to time to reflect service, legal, or operational changes.
-                  Any updates will be posted on this page with a revised effective date.
-                </p>
-              </section>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+          <section className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-lg">
+            <p className="text-gray-500 leading-relaxed">
+              This policy may be updated from time to time to reflect service, legal, or operational changes.
+              Any updates will be posted on this page with a revised effective date.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
   );
 };
 
