@@ -103,7 +103,7 @@ export default function StartYourJourney() {
                 className={inputClass}
                 type="text"
                 name="fullName"
-                placeholder="John Doe"
+                placeholder="Full Name"
                 value={form.fullName}
                 onChange={handleChange}
               />
@@ -114,7 +114,7 @@ export default function StartYourJourney() {
                 className={inputClass}
                 type="email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder="Email Address"
                 value={form.email}
                 onChange={handleChange}
               />

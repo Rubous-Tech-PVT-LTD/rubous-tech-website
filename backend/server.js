@@ -52,7 +52,7 @@ app.use('/api/careers', careerRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/team', teamRoutes);
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (require.main === module) {

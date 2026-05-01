@@ -1,14 +1,9 @@
 import { Headset, ShieldCheck } from "lucide-react";
-import { useState } from "react";
-
-const services = [
-  "AI Automation",
-  "Web Development",
-  "CRM Solutions",
-  "Business Automation",
-];
+import { useEffect, useState } from "react";
 
 const ContactSection = () => {
+  const [services, setServices] = useState([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -17,6 +12,40 @@ const ContactSection = () => {
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setServicesLoading(true);
+
+        const response = await fetch('/api/services');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const responseJson = await response.json();
+
+        if (responseJson.success && Array.isArray(responseJson.data)) {
+          setServices(
+            responseJson.data.map((service) => ({
+              id: service.id || service._id,
+              title: service.title,
+            }))
+          );
+        } else {
+          throw new Error('Invalid response format from API');
+        }
+      } catch (error) {
+        console.error('Error fetching services:', error);
+        setServices([]);
+      } finally {
+        setServicesLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   const validate = () => {
     let newErrors = {};
@@ -137,9 +166,14 @@ const ContactSection = () => {
                 className="w-full mt-1 px-4 py-2 bg-gray-100 rounded-lg outline-none"
               >
                 <option value="">Select a service</option>
-                {services.map((s, i) => (
-                  <option key={i} value={s}>
-                    {s}
+                {servicesLoading && (
+                  <option value="" disabled>
+                    Loading services...
+                  </option>
+                )}
+                {!servicesLoading && services.map((service) => (
+                  <option key={service.id} value={service.title}>
+                    {service.title}
                   </option>
                 ))}
               </select>
