@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/logoDark.jpg";
+import Logo from "../assets/logoDark.png";
 
 const ServiceLinks = () => {
   const [services, setServices] = useState([]);
@@ -59,7 +59,7 @@ const Footer = () => {
                     <img
                       src={Logo}
                       alt="Rubous Tech"
-                      className="h-10 w-auto object-contain"
+                      className="h-14 w-auto object-contain"
                     />
                   </NavLink>
                  <br/>

@@ -1,7 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +63,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Rubous Tech"
-            className="h-10 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
         </NavLink>
 
