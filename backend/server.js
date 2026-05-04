@@ -39,6 +39,7 @@ const pricingRoutes = require('./routes/pricingRoutes');
 const careerRoutes = require('./routes/careerRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
 const teamRoutes = require('./routes/teamRoutes');
+const blogRoutes = require('./routes/blogRoutes');
 
 // Basic Route
 app.get('/', (req, res) => {
@@ -51,6 +52,7 @@ app.use('/api/pricing', pricingRoutes);
 app.use('/api/careers', careerRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/team', teamRoutes);
+app.use('/api/blogs', blogRoutes);
 
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
