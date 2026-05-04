@@ -58,9 +58,7 @@ const MeetVisionaries = () => {
             </p>
           </div>
 
-          <a href="#" className="text-blue-600 text-sm mt-4 md:mt-0 hover:underline">
-            View All team →
-          </a>
+         
         </div>
 
         {loading && (
