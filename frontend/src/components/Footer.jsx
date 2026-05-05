@@ -129,7 +129,7 @@ const Footer = () => {
         {/* DIVIDER */}
         <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           
-          <p> 2026 Rubous Tech Private Limited. All rights reserved.</p>
+          <p>&copy; 2026 Rubous Tech Private Limited. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
             <NavLink to="/privacy" className="hover:text-white">
