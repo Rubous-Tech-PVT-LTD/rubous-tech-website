@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,9 +59,13 @@ const Navbar = () => {
     <nav className="w-full bg-gray-100 border-b border-gray-200 relative">
       <div className="max-w-297 container mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-blue-600 font-semibold text-lg">
-          Rubous Tech
-        </h1>
+        <NavLink to="/" className="flex items-center">
+          <img
+            src={logo}
+            alt="Rubous Tech"
+            className="h-12 w-auto object-contain"
+          />
+        </NavLink>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8 text-sm text-gray-600">

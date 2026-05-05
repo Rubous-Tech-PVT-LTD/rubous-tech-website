@@ -1,22 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Search } from "lucide-react";
-import heroImage from "../../assets/hero.png";
+import { Link } from "react-router-dom";
 
-export default function KnowledgeHub() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All");
+export default function KnowledgeHub({ searchTerm, setSearchTerm, activeFilter, setActiveFilter }) {
+  const [featuredArticle, setFeaturedArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const filters = ["AI Automation", "Productivity", "SaaS", "Workflow Systems", "Business Growth"];
+  const filters = ["All", "AI Automation", "Productivity", "SaaS", "Workflow Systems", "Business Growth"];
 
-  const featuredArticle = {
-    tag: "Featured",
-    category: "Enterprise AI",
-    title: "The 2024 Blueprint for Autonomous Enterprise Operations",
-    description:
-      "How Fortune 500 companies are leveraging generative AI agents to automate up to 70% of repetitive workflows across finance, HR, and customer success.",
-    author: "Dr. Julian Vance",
-    date: "March 14, 2024",
-  };
+  // Fetch featured article from API
+  useEffect(() => {
+    const fetchFeaturedArticle = async () => {
+      try {
+        const response = await fetch('/api/blogs?featured=true');
+        const data = await response.json();
+        
+        if (data.success && data.data.length > 0) {
+          // Get the first featured article
+          const article = data.data[0];
+          setFeaturedArticle({
+            tag: "Featured",
+            category: article.category,
+            title: article.title,
+            description: article.description,
+            author: article.author.name,
+            avatar: article.author.avatar,
+            date: new Date(article.publishedAt).toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            }),
+            slug: article.slug,
+            imageUrl: article.imageUrl
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching featured article:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeaturedArticle();
+  }, []);
 
   return (
     <div className="overflow-hidden bg-[#f8f9ff] py-16 sm:py-20">
@@ -66,64 +92,74 @@ export default function KnowledgeHub() {
         </div>
 
         {/* Featured Article */}
-        <div className="mx-auto mt-12 mb-12 max-w-6xl overflow-hidden rounded-[22px] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] ring-1 ring-slate-100">
-          <div className="grid min-h-[520px] md:grid-cols-[1.05fr_0.95fr]">
-            <div className="min-h-[320px] overflow-hidden bg-[#050d15]">
-              <img
-                src={heroImage}
-                alt="AI automation dashboard"
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            <div className="flex h-full flex-col justify-between px-6 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-9">
-              <div>
-                <div className="flex items-center gap-2.5">
-                  <span className="inline-flex rounded-[4px] bg-[#dbe6ff] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1f4ed8]">
-                    {featuredArticle.tag}
-                  </span>
-                  <span className="text-xs font-medium text-[#98A2B3] sm:text-sm">
-                    {featuredArticle.category}
-                  </span>
-                </div>
-
-                <h2 className="mt-4 max-w-[16ch] text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-[#12213a]">
-                  {featuredArticle.title}
-                </h2>
-
-                <p className="mt-5 max-w-md text-gray-500">
-                  {featuredArticle.description}
-                </p>
-              </div>
-
-              <div className="mt-8 flex items-center justify-between gap-4 pt-6">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 overflow-hidden rounded-full bg-[#1f2937] ring-2 ring-white">
-                    <img
-                      src="https://i.pravatar.cc/80?img=12"
-                      alt={featuredArticle.author}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#12213a]">
-                      {featuredArticle.author}
-                    </div>
-                    <div className="text-xs text-[#98A2B3]">{featuredArticle.date}</div>
-                  </div>
-                </div>
-
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]"
-                >
-                  Read Article
-                  <ArrowRight className="h-4 w-4" />
-                </a>
+        {loading ? (
+          <div className="mx-auto mt-12 mb-12 max-w-6xl overflow-hidden rounded-[22px] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] ring-1 ring-slate-100">
+            <div className="flex items-center justify-center min-h-[520px]">
+              <div className="text-center">
+                <div className="text-gray-500 text-lg">Loading featured article...</div>
               </div>
             </div>
           </div>
-        </div>
+        ) : featuredArticle ? (
+          <div className="mx-auto mt-12 mb-12 max-w-6xl overflow-hidden rounded-[22px] bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] ring-1 ring-slate-100">
+            <div className="grid min-h-[520px] md:grid-cols-[1.05fr_0.95fr]">
+              <div className="min-h-[320px] overflow-hidden">
+                <img
+                  src={featuredArticle.imageUrl}
+                  alt="AI automation dashboard"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="flex h-full flex-col justify-between px-6 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-9">
+                <div>
+                  <div className="flex items-center gap-2.5">
+                    <span className="inline-flex rounded-[4px] bg-[#dbe6ff] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1f4ed8]">
+                      {featuredArticle.tag}
+                    </span>
+                    <span className="text-xs font-medium text-[#98A2B3] sm:text-sm">
+                      {featuredArticle.category}
+                    </span>
+                  </div>
+
+                  <h2 className="mt-4 max-w-[16ch] text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-[#12213a]">
+                    {featuredArticle.title}
+                  </h2>
+
+                  <p className="mt-5 max-w-md text-gray-500">
+                    {featuredArticle.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 flex items-center justify-between gap-4 pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 overflow-hidden rounded-full bg-[#1f2937] ring-2 ring-white">
+                      <img
+                        src={featuredArticle.avatar}
+                        alt={featuredArticle.author}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-[#12213a]">
+                        {featuredArticle.author}
+                      </div>
+                      <div className="text-xs text-[#98A2B3]">{featuredArticle.date}</div>
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/blog/${featuredArticle.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]"
+                  >
+                    Read Article
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

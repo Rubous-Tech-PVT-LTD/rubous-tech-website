@@ -70,51 +70,51 @@ const termsSections = [
 const TermsAndConditions = () => {
   return (
     <main className="min-h-screen bg-[#f8f9ff] py-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-block bg-blue-100 text-blue-600 text-xs font-semibold px-4 py-1 rounded-full mb-5 uppercase">
-            Legal
-          </span>
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <span className="inline-block bg-blue-100 text-blue-600 text-xs font-semibold px-4 py-1 rounded-full mb-5 uppercase">
+          Legal
+        </span>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
-            Terms of Service
-          </h1>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+          Terms of Service
+        </h1>
 
-          <p className="text-gray-500 mt-5 max-w-md mx-auto">
-            Effective Date: April 16, 2026
-          </p>
+        <p className="text-gray-500 mt-5 max-w-md mx-auto">
+          Effective Date: April 16, 2026
+        </p>
 
-          <p className="text-gray-500 mt-5 max-w-2xl mx-auto">
-            These Terms of Service govern your access to and use of Rubous Tech services,
-            website features, and project engagement workflows.
-          </p>
-        </div>
+        <p className="text-gray-500 mt-5 max-w-2xl mx-auto">
+          These Terms of Service govern your access to and use of Rubous Tech services,
+          website features, and project engagement workflows.
+        </p>
 
-        <div className="mx-auto mt-12 max-w-4xl space-y-6">
-          {termsSections.map((section) => (
-            <section
-              key={section.title}
-              className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-lg"
-            >
-              <h2 className="text-2xl font-bold text-gray-800">{section.title}</h2>
-              <ul className="mt-5 space-y-3">
-                {section.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-gray-500 leading-relaxed">
-                    <span className="mt-2 h-2.5 w-2.5 rounded-full bg-blue-600 shrink-0" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
+        <section className="mt-12 rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-lg text-left">
+          <div className="space-y-8">
+            {termsSections.map((section, index) => (
+              <div
+                key={section.title}
+                className={index === 0 ? '' : 'border-t border-gray-100 pt-8'}
+              >
+                <h2 className="text-2xl font-bold text-gray-800">{section.title}</h2>
+                <ul className="mt-5 space-y-3">
+                  {section.points.map((point) => (
+                    <li key={point} className="flex items-start gap-3 text-gray-500 leading-relaxed">
+                      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-blue-600 shrink-0" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
 
-          <section className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-lg">
-            <p className="text-gray-500 leading-relaxed">
-              We may revise these terms periodically for legal, operational, or service-related reasons.
-              Continued use of the platform after updates indicates acceptance of revised terms.
-            </p>
-          </section>
-        </div>
+            <div className="border-t border-gray-100 pt-8">
+              <p className="text-gray-500 leading-relaxed">
+                We may revise these terms periodically for legal, operational, or service-related reasons.
+                Continued use of the platform after updates indicates acceptance of revised terms.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
