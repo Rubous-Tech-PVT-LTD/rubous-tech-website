@@ -115,7 +115,7 @@ const RoomIllustration = () => (
 /** Hero / Our Process section */
 const OurProcessHero = () => (
   <section className="bg-[#f0f2f7] min-h-screen flex items-center justify-center px-5 font-['DM_Sans',sans-serif]">
-    <div className="w-full max-w-[1100px] py-20 px-15 flex flex-col md:flex-row items-center justify-between gap-16">
+    <div className="w-full max-w-[1100px] 2xl:max-w-360 py-20 px-15 flex flex-col md:flex-row items-center justify-between gap-16">
       {/* Left: text */}
       <div className="flex-1 max-w-[420px]">
         <p className="text-[11px] font-semibold tracking-[0.14em] text-[#1a4fd8] uppercase mb-5 animate-[fadeUp_0.5s_ease_forwards] opacity-0">
@@ -152,7 +152,7 @@ const OurProcessHero = () => (
 /** Road to Automation section */
 const RoadToAutomation = () => (
   <section className="bg-[#eef2f9] min-h-screen flex items-center justify-center px-5 font-['DM_Sans',sans-serif]">
-    <div className="w-full max-w-[1100px] py-20 px-15 text-center">
+    <div className="w-full max-w-[1100px] 2xl:max-w-360 py-20 px-15 text-center">
       <h2 className="font-['Sora',sans-serif] text-[clamp(32px,4vw,46px)] font-bold text-[#0d1b3e] mb-4 tracking-[-0.02em]">
         The Road to Automation
       </h2>
@@ -193,7 +193,7 @@ const RoadToAutomation = () => (
 const FeaturesSection = () => (
   <div className="bg-[#eef0f8] font-['Inter',sans-serif]">
     {/* Feature Cards */}
-    <div className="px-12 pt-12 pb-8">
+    <div className="px-12 pt-12 pb-8 2xl:max-w-360 mx-auto" >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[18px]">
         {processFeatures.map(({ icon, title, desc }) => (
           <div key={title} className="bg-white rounded-2xl px-6 pt-7 pb-8 shadow-[0_1px_4px_rgba(0,0,0,0.05)]">
@@ -248,7 +248,7 @@ const CTAAndFAQ = () => (
   <div className="bg-[#eef0f8] font-['Inter',sans-serif]">
     {/* CTA Banner */}
       <div className="w-full bg-[#f8f9ff] md:py-24 sm:py-16 py-12 px-6 ">
-      <div className="max-w-5xl mx-auto bg-linear-to-r from-blue-700 to-blue-500 rounded-3xl px-6 py-10 md:px-12 md:py-14 text-center text-white shadow-lg">
+      <div className="max-w-5xl 2xl:max-w-7xl mx-auto bg-linear-to-r from-blue-700 to-blue-500 rounded-3xl px-6 py-10 md:px-12 md:py-14 text-center text-white shadow-lg">
         
         {/* Heading */}
         <h2 className="text-2xl md:text-4xl font-semibold mb-4">

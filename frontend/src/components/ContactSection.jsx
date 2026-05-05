@@ -82,7 +82,7 @@ const ContactSection = () => {
 
   return (
     <section className="bg-[#f3f6ff] md:py-24 sm:py-16 py-12 px-6">
-      <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-lg grid md:grid-cols-2">
+      <div className="max-w-5xl 2xl:max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-lg grid md:grid-cols-2">
         
         {/* LEFT SIDE */}
         <div className="bg-linear-to-br from-blue-700 to-blue-500 text-white md:p-10 py-8 px-6">

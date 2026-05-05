@@ -22,7 +22,7 @@ const stats = [
 export default function HeroSection() {
   return (
     <div className="bg-[#f8f9ff] pt-[62px] pb-20 lg:pb-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.02fr_1fr] gap-12 lg:gap-16 items-center">
+      <div className="max-w-297 2xl:max-w-360 mx-auto px-6 grid lg:grid-cols-[1.02fr_1fr] gap-12 lg:gap-16 items-center">
         {/* Left Content */}
           <div className="max-w-xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight wrap-break-words">

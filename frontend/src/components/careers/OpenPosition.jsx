@@ -74,7 +74,7 @@ export default function OpenPositions() {
   return (
     <>
       <div className="bg-[#f8f9ff] py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6">
 
           {/* ── Header ── */}
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">

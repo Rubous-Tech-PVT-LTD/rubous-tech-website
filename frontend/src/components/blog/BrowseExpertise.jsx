@@ -19,7 +19,7 @@ export default function BrowseByExpertise() {
 
   return (
     <div className="bg-[#f8f9ff] py-16 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 text-center">
+      <div className="mx-auto max-w-297 2xl:max-w-360 px-6 text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-gray-800">
           Browse by Expertise
         </h2>

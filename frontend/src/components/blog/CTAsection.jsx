@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 const CTASection = () => {
   return (
     <div className="w-full bg-[#f8f9ff] py-16 sm:py-20 md:py-24 px-6">
-      <div className="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl px-6 sm:px-12 py-12 sm:py-16 text-center text-white shadow-lg">
+      <div className="max-w-5xl 2xl:max-w-7xl mx-auto bg-linear-to-r from-blue-600 to-blue-500 rounded-3xl px-6 sm:px-12 py-12 sm:py-16 text-center text-white shadow-lg">
         
         {/* Heading */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">

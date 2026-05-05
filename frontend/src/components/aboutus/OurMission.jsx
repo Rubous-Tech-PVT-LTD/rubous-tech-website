@@ -3,7 +3,7 @@ import React from "react";
 const OurMission = () => {
   return (
     <section className="w-full bg-gray-100 py-16  flex justify-center">
-      <div className="max-w-297 w-full px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-297 container 2xl:max-w-360 w-full px-6 grid md:grid-cols-2 gap-10 items-center">
         
         {/* Left Content */}
         <div>

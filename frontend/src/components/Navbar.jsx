@@ -57,7 +57,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-gray-100 border-b border-gray-200 relative">
-      <div className="max-w-297 container mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-297 2xl:max-w-360 container mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <NavLink to="/" className="flex items-center">
           <img

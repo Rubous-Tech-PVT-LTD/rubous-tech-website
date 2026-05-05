@@ -47,8 +47,8 @@ const ServiceLinks = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0b1f3a] text-gray-300 pt-14 pb-6">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-blue-600 text-gray-300 pt-14 pb-6">
+      <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6">
         
         {/* TOP GRID */}
         <div className="grid md:grid-cols-4 gap-10">
@@ -63,7 +63,7 @@ const Footer = () => {
                     />
                   </NavLink>
                  <br/>
-            <p className="text-sm text-gray-400 mb-6">
+            <p className="text-sm text-white mb-6">
               Revolutionizing the digital landscape with intelligent,
               AI-driven automation solutions.
             </p>
@@ -104,19 +104,19 @@ const Footer = () => {
             <h3 className="text-white font-medium mb-4">Contact</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
-                <Mail size={16} className="text-blue-500" />
+                <Mail size={16} className="text-white" />
                 <a href="mailto:hello@ruboustech.com" className="hover:text-white">
                   hello@ruboustech.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} className="text-blue-500" />
+                <Phone size={16} className="text-white" />
                 <a href="tel:+15550001234" className="hover:text-white">
                   +1 (555) 000-1234
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin size={16} className="text-blue-500 mt-1" />
+                <MapPin size={16} className="text-white mt-1" />
                 <span>
                   123 Innovation Drive,<br />
                   Silicon Valley, CA 94025
@@ -129,13 +129,13 @@ const Footer = () => {
         {/* DIVIDER */}
         <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           
-          <p> 2026 Rubous Tech Private Limited. All rights reserved.</p>
+          <p className="text-white" > 2026 Rubous Tech Private Limited. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
-            <NavLink to="/privacy" className="hover:text-white">
+            <NavLink to="/privacy" className="text-white hover:text-gray-300">
               Privacy Policy
             </NavLink>
-            <NavLink to="/terms" className="hover:text-white">
+            <NavLink to="/terms" className="text-white hover:text-gray-300">
               Terms and Conditions
             </NavLink>
           </div>

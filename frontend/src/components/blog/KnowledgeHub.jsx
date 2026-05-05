@@ -47,7 +47,7 @@ export default function KnowledgeHub() {
 
   return (
     <div className="overflow-hidden bg-[#f8f9ff] py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-297 2xl:max-w-360 px-6">
         <div className="mx-auto max-w-4xl text-center">
           <span className="inline-flex items-center rounded-full bg-[#dbe6ff] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#1f4ed8]">
             Knowledge Hub

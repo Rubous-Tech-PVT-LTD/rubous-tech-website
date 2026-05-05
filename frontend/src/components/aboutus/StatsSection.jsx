@@ -10,7 +10,7 @@ const stats = [
 const StatsSection = () => {
   return (
     <div className="w-full bg-[#eef4ff] py-20 flex justify-center">
-      <div className="w-full max-w-5xl px-4">
+      <div className="w-full max-w-5xl 2xl:max-w-7xl px-4">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((item, index) => (
             <div

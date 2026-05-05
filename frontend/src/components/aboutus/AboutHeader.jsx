@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const AboutHero = () => {
   return (
     <section className="w-full min-h-[calc(100vh-60px)] bg-[#f3f3f3] flex items-center px-6 py-12">
-      <div className="max-w-297 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+      <div className="max-w-297 container 2xl:max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         
         {/* Left Content */}
         <div className="space-y-6">

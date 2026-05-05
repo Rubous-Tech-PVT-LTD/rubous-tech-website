@@ -88,7 +88,7 @@ export default function TrendingTopics() {
 
   return (
     <section className="bg-[#f7f9ff] py-12 sm:py-14 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-297 2xl:max-w-360 px-6">
         <div className="mb-8 flex items-center gap-2 text-[#12213a]">
           <TrendingUp className="h-4 w-4 -rotate-12 text-[#1f4ed8]" />
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-gray-800">
