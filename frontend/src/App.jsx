@@ -9,6 +9,7 @@ import CareerPage from './pages/CareerPage'
 import OurProcess from './pages/OurProcess'
 import SuccessStories from './pages/SuccessStories'
 import Blog from './pages/Blog'
+import BlogArticle from './components/blog/BlogArticle'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 
@@ -24,6 +25,7 @@ function App() {
 <Route path='/careers' element={<CareerPage />} />
 <Route path='/case-studies' element={<SuccessStories />} />
 <Route path='/blog' element={<Blog />} />
+<Route path='/blog/:slug' element={<BlogArticle />} />
 <Route path='/privacy' element={<PrivacyPolicy />} />
 <Route path='/terms' element={<TermsAndConditions />} />
       </Routes>

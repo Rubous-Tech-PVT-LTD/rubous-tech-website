@@ -1,7 +1,8 @@
 import { ArrowRight, ArrowLeftRight, Bot, Shield, TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-export default function TrendingTopics() {
+export default function TrendingTopics({ searchTerm = "", activeFilter = "All" }) {
   const [articles, setArticles] = useState([]);
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -83,8 +84,19 @@ export default function TrendingTopics() {
     });
   };
 
-  // Display articles (initial 3 or all)
-  const displayArticles = showingAll ? allArticles : articles;
+  // Display articles (initial 3 or all), then apply search and category filters
+  const baseArticles = showingAll ? allArticles : articles;
+  const displayArticles = baseArticles.filter((article) => {
+    const matchesFilter = activeFilter === "All" || article.category === activeFilter;
+    const lowerSearch = searchTerm.toLowerCase();
+    const matchesSearch =
+      !lowerSearch ||
+      article.title.toLowerCase().includes(lowerSearch) ||
+      article.description.toLowerCase().includes(lowerSearch) ||
+      article.category.toLowerCase().includes(lowerSearch) ||
+      article.tag.toLowerCase().includes(lowerSearch);
+    return matchesFilter && matchesSearch;
+  });
 
   return (
     <section className="bg-[#f7f9ff] py-12 sm:py-14 overflow-hidden">
@@ -222,10 +234,10 @@ export default function TrendingTopics() {
                           </div>
                         </div>
 
-                        <button className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]">
+                        <Link to={`/blog/${article.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]">
                           Read More
                           <ArrowRight className="h-3.5 w-3.5" />
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </article>

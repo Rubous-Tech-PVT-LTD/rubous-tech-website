@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Search } from "lucide-react";
-import heroImage from "../../assets/hero.png";
+import { Link } from "react-router-dom";
 
-export default function KnowledgeHub() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All");
+export default function KnowledgeHub({ searchTerm, setSearchTerm, activeFilter, setActiveFilter }) {
   const [featuredArticle, setFeaturedArticle] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const filters = ["AI Automation", "Productivity", "SaaS", "Workflow Systems", "Business Growth"];
+  const filters = ["All", "AI Automation", "Productivity", "SaaS", "Workflow Systems", "Business Growth"];
 
   // Fetch featured article from API
   useEffect(() => {
@@ -26,6 +24,7 @@ export default function KnowledgeHub() {
             title: article.title,
             description: article.description,
             author: article.author.name,
+            avatar: article.author.avatar,
             date: new Date(article.publishedAt).toLocaleDateString('en-US', { 
               year: 'numeric', 
               month: 'long', 
@@ -136,7 +135,7 @@ export default function KnowledgeHub() {
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 overflow-hidden rounded-full bg-[#1f2937] ring-2 ring-white">
                       <img
-                        src="https://i.pravatar.cc/80?img=12"
+                        src={featuredArticle.avatar}
                         alt={featuredArticle.author}
                         className="h-full w-full object-cover"
                       />
@@ -149,13 +148,13 @@ export default function KnowledgeHub() {
                     </div>
                   </div>
 
-                  <a
-                    href={`/blog/${featuredArticle.slug}`}
+                  <Link
+                    to={`/blog/${featuredArticle.slug}`}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]"
                   >
                     Read Article
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
