@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowLeftRight, Bot, Shield, TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function TrendingTopics({ searchTerm = "", activeFilter = "All" }) {
   const [articles, setArticles] = useState([]);
@@ -233,10 +234,10 @@ export default function TrendingTopics({ searchTerm = "", activeFilter = "All" }
                           </div>
                         </div>
 
-                        <a href={`/blog/${article.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]">
+                        <Link to={`/blog/${article.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]">
                           Read More
                           <ArrowRight className="h-3.5 w-3.5" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </article>

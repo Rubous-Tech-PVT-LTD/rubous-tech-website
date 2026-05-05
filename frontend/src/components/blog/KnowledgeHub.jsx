@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Search } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function KnowledgeHub({ searchTerm, setSearchTerm, activeFilter, setActiveFilter }) {
   const [featuredArticle, setFeaturedArticle] = useState(null);
@@ -147,13 +148,13 @@ export default function KnowledgeHub({ searchTerm, setSearchTerm, activeFilter, 
                     </div>
                   </div>
 
-                  <a
-                    href={`/blog/${featuredArticle.slug}`}
+                  <Link
+                    to={`/blog/${featuredArticle.slug}`}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#1f4ed8] transition hover:text-[#153cb3]"
                   >
                     Read Article
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
