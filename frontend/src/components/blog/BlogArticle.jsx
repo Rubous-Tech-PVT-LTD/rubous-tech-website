@@ -74,6 +74,34 @@ const BlogArticle = () => {
     }
   };
 
+  // Optimized content parser - handles array-based content structure
+  const parseContent = (content) => {
+    // Handle array-based content structure
+    if (Array.isArray(content)) {
+      return content.map((item, index) => {
+        if (item.type === 'heading') {
+          return (
+            <h2 key={index} className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 mt-6">
+              {item.text}
+            </h2>
+          );
+        }
+        
+        if (item.type === 'paragraph') {
+          return (
+            <p key={index} className="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+              {item.text}
+            </p>
+          );
+        }
+        
+        return null;
+      });
+    }
+    
+    return [];
+  };
+
 
   if (loading) {
     return (
@@ -169,10 +197,9 @@ const BlogArticle = () => {
                 {article.description}
               </div>
 
-              <div 
-                className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-gray-900 prose-code:text-blue-600 prose-pre:bg-gray-100 prose-blockquote:border-l-blue-600 prose-blockquote:text-gray-600 prose-ul:text-gray-700 prose-ol:text-gray-700"
-                dangerouslySetInnerHTML={{ __html: article.content }}
-              />
+              <div className="prose prose-lg max-w-none font-sans">
+                {parseContent(article.content)}
+              </div>
             </div>
 
             {/* Article Actions */}

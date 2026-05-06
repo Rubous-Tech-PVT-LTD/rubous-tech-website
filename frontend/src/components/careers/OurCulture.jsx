@@ -21,7 +21,7 @@ const features = [
 
 export default function OurCulture() {
   return (
-    <div className="bg-[#f8f9ff] py-16 overflow-hidden">
+    <div id="our-culture" className="bg-[#f8f9ff] py-16 overflow-hidden">
       <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
         {/* ── LEFT ── */}
         <div>

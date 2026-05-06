@@ -81,7 +81,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="bg-[#f3f6ff] md:py-24 sm:py-16 py-12 px-6">
+    <section id="contact" className="bg-[#f3f6ff] md:py-24 sm:py-16 py-12 px-6">
       <div className="max-w-5xl 2xl:max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-lg grid md:grid-cols-2">
         
         {/* LEFT SIDE */}

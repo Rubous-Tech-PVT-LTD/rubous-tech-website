@@ -8,8 +8,10 @@ import AboutUs from './pages/AboutUs'
 import CareerPage from './pages/CareerPage'
 import OurProcess from './pages/OurProcess'
 import SuccessStories from './pages/SuccessStories'
+import SolutionDetail from './pages/SolutionDetail'
 import Blog from './pages/Blog'
 import BlogArticle from './components/blog/BlogArticle'
+import ContactSection from './components/ContactSection'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 
@@ -26,6 +28,8 @@ function App() {
 <Route path='/case-studies' element={<SuccessStories />} />
 <Route path='/blog' element={<Blog />} />
 <Route path='/blog/:slug' element={<BlogArticle />} />
+<Route path='/contact' element={<ContactSection />} />
+<Route path='/solution/:id' element={<SolutionDetail />} />
 <Route path='/privacy' element={<PrivacyPolicy />} />
 <Route path='/terms' element={<TermsAndConditions />} />
       </Routes>

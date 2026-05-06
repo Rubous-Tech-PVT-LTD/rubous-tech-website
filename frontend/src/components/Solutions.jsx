@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Bot,
   Calendar,
@@ -28,17 +29,23 @@ const colorStyles = {
 };
 
 const Solutions = () => {
+  const navigate = useNavigate();
+
   const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorState, setErrorState] = useState(null);
+
+  const handleCardClick = (service) => {
+    navigate(`/solution/${service.id}`);
+  };
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        setLoading(true);
-        setError(null);
+        setIsLoading(true);
+        setErrorState(null);
 
-        const response = await fetch('/api/services');
+        const response = await fetch("/api/services");
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -47,25 +54,27 @@ const Solutions = () => {
         const responseJson = await response.json();
 
         if (responseJson.success && Array.isArray(responseJson.data)) {
-          setServices(
-            responseJson.data.map((service) => ({
-              id: service.id || service._id,
-              icon: service.icon,
-              title: service.title,
-              desc: service.tagline,
-              points: Array.isArray(service.features) ? service.features : [],
-              color: service.color || 'blue',
-            }))
-          );
+          const formattedServices = responseJson.data.map((service) => ({
+            id: service.id || service._id,
+            icon: service.icon,
+            title: service.title,
+            desc: service.tagline,
+            points: Array.isArray(service.features)
+              ? service.features
+              : [],
+            color: service.color || "blue",
+          }));
+
+          setServices(formattedServices);
         } else {
-          throw new Error('Invalid response format from API');
+          throw new Error("Invalid response format from API");
         }
       } catch (err) {
-        console.error('Error fetching services:', err);
-        setError(err.message);
+        console.error("Error fetching services:", err);
+        setErrorState(err.message || "Something went wrong");
         setServices([]);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
@@ -85,31 +94,38 @@ const Solutions = () => {
           efficiency across every department.
         </p>
 
-        {loading && (
+        {/* Loading */}
+        {isLoading && (
           <div className="flex justify-center items-center py-12">
             <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-blue-600" />
           </div>
         )}
 
-        {error && !loading && (
+        {/* Error */}
+        {errorState && !isLoading && (
           <div className="mt-12 rounded-2xl border border-red-200 bg-red-50 p-6 text-center text-red-600">
             <p className="font-semibold">Unable to load services</p>
-            <p className="mt-1 text-sm text-red-500">{error}</p>
+            <p className="mt-1 text-sm text-red-500">{errorState}</p>
           </div>
         )}
 
-        {!loading && !error && services.length > 0 && (
+        {/* Data */}
+        {!isLoading && !errorState && services.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 text-left">
             {services.map((item) => {
               const Icon = iconMap[item.icon] || Shield;
-              const iconClasses = colorStyles[item.color] || colorStyles.blue;
+              const iconClasses =
+                colorStyles[item.color] || colorStyles.blue;
 
               return (
                 <div
                   key={item.id}
-                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition"
+                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition cursor-pointer"
+                  onClick={() => handleCardClick(item)}
                 >
-                  <div className={`w-10 h-10 flex items-center justify-center rounded-lg mb-4 ${iconClasses}`}>
+                  <div
+                    className={`w-10 h-10 flex items-center justify-center rounded-lg mb-4 ${iconClasses}`}
+                  >
                     <Icon size={20} />
                   </div>
 
@@ -123,7 +139,10 @@ const Solutions = () => {
 
                   <ul className="space-y-2">
                     {item.points.map((point, i) => (
-                      <li key={`${item.id}-${i}`} className="flex items-center gap-2 text-sm text-gray-600">
+                      <li
+                        key={`${item.id}-${i}`}
+                        className="flex items-center gap-2 text-sm text-gray-600"
+                      >
                         <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
                         {point}
                       </li>
@@ -135,7 +154,8 @@ const Solutions = () => {
           </div>
         )}
 
-        {!loading && !error && services.length === 0 && (
+        {/* Empty State */}
+        {!isLoading && !errorState && services.length === 0 && (
           <div className="mt-12 rounded-2xl border border-dashed border-gray-300 bg-white/70 p-8 text-gray-500">
             No services are available right now.
           </div>

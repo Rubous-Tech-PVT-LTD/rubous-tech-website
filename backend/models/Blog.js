@@ -27,11 +27,20 @@ const BlogSchema = new mongoose.Schema(
       trim: true,
       maxlength: [500, 'Description cannot be more than 500 characters']
     },
-    content: {
-      type: String,
-      required: [true, 'Please add blog content'],
-      trim: true
-    },
+    content: [
+      {
+        type: {
+          type: String,
+          required: [true, 'Content type is required'],
+          enum: ['heading', 'paragraph']
+        },
+        text: {
+          type: String,
+          required: [true, 'Text content is required'],
+          trim: true
+        }
+      }
+    ],
     tag: {
       type: String,
       required: [true, 'Please add a blog tag'],
@@ -94,11 +103,8 @@ BlogSchema.index({ slug: 1 });
 BlogSchema.index({ tag: 1 });
 BlogSchema.index({ category: 1 });
 BlogSchema.index({ isPublished: 1 });
-BlogSchema.index({ isFeatured: 1 });
 BlogSchema.index({ publishedAt: -1 });
-BlogSchema.index({ isPublished: 1, publishedAt: -1 });
-BlogSchema.index({ isPublished: 1, tag: 1 });
-BlogSchema.index({ isPublished: 1, category: 1 });
+
 
 // Text index for search functionality
 BlogSchema.index({

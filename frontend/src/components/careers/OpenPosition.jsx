@@ -73,7 +73,7 @@ export default function OpenPositions() {
 
   return (
     <>
-      <div className="bg-[#f8f9ff] py-16 overflow-hidden">
+      <div id="open-positions" className="bg-[#f8f9ff] py-16 overflow-hidden">
         <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6">
 
           {/* ── Header ── */}

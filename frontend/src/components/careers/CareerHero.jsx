@@ -6,6 +6,19 @@ import StartJourney from "./StartJourney";
 import Footer from "../Footer";
 
 export default function CareerHero() {
+  const handleViewOpenings = () => {
+    const openPositions = document.getElementById('open-positions');
+    if (openPositions) {
+      openPositions.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleOurCulture = () => {
+    const ourCulture = document.getElementById('our-culture');
+    if (ourCulture) {
+      ourCulture.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <>
       <div className="bg-[#f8f9ff] py-16 overflow-hidden">
@@ -27,10 +40,16 @@ export default function CareerHero() {
             </p>
 
             <div className="flex items-center gap-4 mt-8 flex-wrap">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+              <button 
+                onClick={handleViewOpenings}
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition"
+              >
                 View Openings
               </button>
-              <button className="bg-blue-100 text-blue-600 px-5 py-3 rounded-lg hover:bg-blue-200 transition">
+              <button 
+                onClick={handleOurCulture}
+                className="bg-blue-100 text-blue-600 px-5 py-3 rounded-lg hover:bg-blue-200 transition"
+              >
                 Our Culture
               </button>
             </div>

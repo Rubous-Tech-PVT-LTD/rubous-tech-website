@@ -1,6 +1,13 @@
 import React from "react";
 
 const Hero = () => {
+  const handleGetStarted = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="bg-[#f8f9ff] min-h-[calc(100vh-62px)] flex flex-col overflow-hidden">
       <div className="max-w-297 2xl:max-w-360 mx-auto px-6 grid md:grid-cols-2 gap-10 items-center flex-1 w-full">
@@ -24,11 +31,16 @@ const Hero = () => {
           </p>
 
           <div className="flex items-center gap-4 mt-8 flex-wrap">
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+            <button 
+              onClick={handleGetStarted}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition"
+            >
               Get Started
             </button>
 
-            <button className="flex items-center gap-2 bg-blue-100 text-blue-600 px-5 py-3 rounded-lg hover:bg-blue-200 transition">
+            <button 
+              onClick={handleGetStarted}
+              className="flex items-center gap-2 bg-blue-100 text-blue-600 px-5 py-3 rounded-lg hover:bg-blue-200 transition">
               ▶ Watch Demo
             </button>
           </div>
