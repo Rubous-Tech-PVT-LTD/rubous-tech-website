@@ -3,7 +3,7 @@ import React from "react";
 const AboutCta = () => {
   return (
     <section className="w-full bg-gray-100 py-16 px-4 flex justify-center">
-      <div className="w-full max-w-5xl bg-blue-700 rounded-3xl py-12 px-6 text-center shadow-lg">
+      <div className="w-full max-w-5xl 2xl:max-w-7xl bg-blue-700 rounded-3xl py-12 px-6 text-center shadow-lg">
         
         {/* Heading */}
         <h2 className="text-white text-2xl md:text-4xl font-bold mb-4">

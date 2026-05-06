@@ -59,7 +59,7 @@ export default function TrustedScalability() {
 
       {/* ── TRUSTED BY INDUSTRY PIONEERS ── */}
       <section className="bg-[#f0f2f8] py-16">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[220px_1fr_1fr] gap-7 items-start">
+        <div className="max-w-297 2xl:max-w-360 mx-auto px-6 grid grid-cols-1 lg:grid-cols-[220px_1fr_1fr] gap-7 items-start">
 
           {/* Left */}
           <div>
@@ -102,7 +102,7 @@ export default function TrustedScalability() {
 
       {/* ── SCALABILITY ACROSS ANY DOMAIN ── */}
       <section className="bg-white py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-297 2xl:max-w-360 mx-auto px-6 text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2.5">Our Reach</p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 tracking-tight mb-12">Scalability Across Any Domain</h2>
           <div className="flex flex-wrap justify-center gap-0">

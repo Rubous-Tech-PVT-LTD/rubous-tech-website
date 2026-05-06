@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
 
 const AboutHero = () => {
+  const handleLearnMore = () => {
+    const missionSection = document.getElementById('ourmission');
+
+    if (missionSection) {
+      missionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="w-full min-h-[calc(100vh-60px)] bg-[#f3f3f3] flex items-center px-6 py-12">
-      <div className="max-w-297 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+      <div className="max-w-297 container 2xl:max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         
         {/* Left Content */}
         <div className="space-y-6">
@@ -29,7 +37,11 @@ const AboutHero = () => {
 
           {/* Buttons */}
           <div className="flex flex-wrap items-center gap-6 pt-2">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition shadow-md">
+            <button
+              type="button"
+              onClick={handleLearnMore}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition shadow-md"
+            >
               Learn More
             </button>
 

@@ -1,21 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import Logo from "../assets/logoDark.png";
+
+const ServiceLinks = () => {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch('/api/services');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) {
+          setServices(json.data.map(s => ({ id: s.id || s._id, title: s.title })));
+        } else {
+          setServices([]);
+        }
+      } catch (err) {
+        console.error('Failed to load services', err);
+        setServices([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  if (loading) return <p className="text-sm text-gray-400">Loading...</p>;
+
+  if (!services || services.length === 0) return null;
+
+  return (
+    <ul className="space-y-2 text-sm">
+      {services.map((s) => (
+        <li key={s.id}>
+          <NavLink to={`/services/${s.id}`} className="hover:text-white">{s.title}</NavLink>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0b1f3a] text-gray-300 pt-14 pb-6">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-blue-600 text-gray-300 pt-14 pb-6">
+      <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6">
         
         {/* TOP GRID */}
         <div className="grid md:grid-cols-4 gap-10">
           
           {/* LOGO + DESC */}
           <div>
-            <h2 className="text-white text-lg font-semibold mb-3">
-              Rubous Tech
-            </h2>
-            <p className="text-sm text-gray-400 mb-6">
+             <NavLink to="/" className="flex items-center">
+                    <img
+                      src={Logo}
+                      alt="Rubous Tech"
+                      className="h-14 w-auto object-contain"
+                    />
+                  </NavLink>
+                 <br/>
+            <p className="text-sm text-white mb-6">
               Revolutionizing the digital landscape with intelligent,
               AI-driven automation solutions.
             </p>
@@ -37,12 +85,7 @@ const Footer = () => {
           {/* SOLUTION */}
           <div>
             <h3 className="text-white font-medium mb-4">Solution</h3>
-            <ul className="space-y-2 text-sm">
-              <li><NavLink to="/booking" className="hover:text-white">Booking Automation</NavLink></li>
-              <li><NavLink to="/ai-handler" className="hover:text-white">AI Inquiry Handler</NavLink></li>
-              <li><NavLink to="/calendar" className="hover:text-white">Calendar Sync</NavLink></li>
-              <li><NavLink to="/enterprise" className="hover:text-white">Enterprise Tools</NavLink></li>
-            </ul>
+            <ServiceLinks />
           </div>
 
           {/* COMPANY */}
@@ -61,19 +104,19 @@ const Footer = () => {
             <h3 className="text-white font-medium mb-4">Contact</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
-                <Mail size={16} className="text-blue-500" />
+                <Mail size={16} className="text-white" />
                 <a href="mailto:hello@ruboustech.com" className="hover:text-white">
                   hello@ruboustech.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} className="text-blue-500" />
+                <Phone size={16} className="text-white" />
                 <a href="tel:+15550001234" className="hover:text-white">
                   +1 (555) 000-1234
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin size={16} className="text-blue-500 mt-1" />
+                <MapPin size={16} className="text-white mt-1" />
                 <span>
                   123 Innovation Drive,<br />
                   Silicon Valley, CA 94025
@@ -86,13 +129,13 @@ const Footer = () => {
         {/* DIVIDER */}
         <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           
-          <p> 2026 Rubous Tech Private Limited. All rights reserved.</p>
+          <p className="text-white" >&copy; 2026 Rubous Tech Private Limited. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
-            <NavLink to="/privacy" className="hover:text-white">
+            <NavLink to="/privacy" className="text-white hover:text-gray-300">
               Privacy Policy
             </NavLink>
-            <NavLink to="/terms" className="hover:text-white">
+            <NavLink to="/terms" className="text-white hover:text-gray-300">
               Terms and Conditions
             </NavLink>
           </div>

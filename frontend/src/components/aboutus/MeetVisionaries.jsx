@@ -47,7 +47,7 @@ const MeetVisionaries = () => {
 
   return (
     <section className="w-full bg-[#eef4ff] py-16 flex justify-center">
-      <div className="max-w-297 px-6 w-full">
+      <div className="max-w-297 container 2xl:max-w-360 px-6 w-full">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
           <div>
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
@@ -58,9 +58,7 @@ const MeetVisionaries = () => {
             </p>
           </div>
 
-          <a href="#" className="text-blue-600 text-sm mt-4 md:mt-0 hover:underline">
-            View All team →
-          </a>
+         
         </div>
 
         {loading && (

@@ -64,7 +64,7 @@ export default function IndustryImpacts() {
 
   return (
     <div className="bg-[#f8f9ff] py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="max-w-297 2xl:max-w-360 mx-auto px-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 leading-tight mb-6">
           Industry Impacts
         </h2>
@@ -100,7 +100,7 @@ export default function IndustryImpacts() {
 
       {/* Stats Bar */}
       <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-297 2xl:max-w-360 mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((s, idx) => (
               <div key={idx} className="text-center">
