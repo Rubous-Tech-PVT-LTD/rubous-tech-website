@@ -83,6 +83,10 @@ export default function StartYourJourney() {
     if (file) setFileName(file.name);
   };
 
+  const handleSendResume = () => {
+    window.location.href = 'mailto:info@ruboustech.com';
+  };
+
   return (
     <div id="start-journey" className="bg-gray-100 py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -202,13 +206,15 @@ export default function StartYourJourney() {
             We're always on the lookout for exceptional talent. If you don't see a current opening that fits your skills, send us your resume anyway.
           </p>
           <div className="flex flex-wrap gap-3 justify-center items-center">
-            <button className="bg-white text-blue-600 font-medium py-3 px-6 rounded-lg border-none cursor-pointer shadow-md transition-colors duration-200 hover:bg-gray-50">
+            <button
+              type="button"
+              onClick={handleSendResume}
+              className="bg-white text-blue-600 font-medium py-3 px-6 rounded-lg border-none cursor-pointer shadow-md transition-colors duration-200 hover:bg-gray-50"
+            >
               Send Resume
             </button>
 
-            <button className="bg-transparent text-white font-medium py-3 px-6 rounded-lg border border-blue-400 cursor-pointer transition-all duration-200 hover:bg-white hover:text-blue-600">
-              Contact HR
-            </button>
+            
           </div>
         </div>
       </div>

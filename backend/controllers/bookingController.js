@@ -4,24 +4,36 @@ const Booking = require('../models/Booking');
 // @route   POST /api/bookings
 exports.createBooking = async (req, res) => {
   try {
-    const { clientName, clientEmail, date, timeSlot } = req.body;
+    const { clientName, clientEmail, service, time, date } = req.body;
 
-    if (!clientName || !clientEmail || !date || !timeSlot) {
-      return res.status(400).json({ success: false, message: 'Please provide all required fields' });
+    if (!clientName || !clientEmail) {
+      return res.status(400).json({ success: false, message: 'Please provide your name and email' });
     }
 
-    // Check availability
-    const isAvailable = await Booking.checkAvailability(date, timeSlot);
-    if (!isAvailable) {
-      return res.status(400).json({ success: false, message: 'This slot is already booked' });
+    const isConsultationRequest = Boolean(service && !date);
+    const isScheduledBooking = Boolean(date && time);
+
+    if (!isConsultationRequest && !isScheduledBooking) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a service or a date and time'
+      });
     }
 
-    const booking = await Booking.create({ clientName, clientEmail, date, timeSlot });
+    const booking = await Booking.create({
+      clientName,
+      clientEmail,
+      service,
+      time,
+      date: date || null,
+    });
 
     res.status(201).json({
       success: true,
       data: booking,
-      message: 'Booking request sent successfully!'
+      message: isConsultationRequest
+        ? 'Consultation request sent successfully!'
+        : 'Booking request sent successfully!'
     });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Server error', error: error.message });

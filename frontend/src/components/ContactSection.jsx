@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 const ContactSection = () => {
   const [services, setServices] = useState([]);
   const [servicesLoading, setServicesLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     service: "",
+    time: "",
+    date: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -64,19 +67,60 @@ const ContactSection = () => {
       newErrors.service = "Please select a service";
     }
 
+    if (!form.time) {
+      newErrors.time = "Please select a time";
+    }
+
+    if (!form.date) {
+      newErrors.date = "Please select a date";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validate()) {
-      setSuccess(true);
+      try {
+        setSubmitting(true);
+        setSuccess(false);
 
-      // Reset form
-      setForm({ name: "", email: "", service: "" });
-      setErrors({});
+        const response = await fetch('/api/bookings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            clientName: form.name,
+            clientEmail: form.email,
+            service: form.service,
+            time: form.time,
+            date: form.date,
+          }),
+        });
+
+        const responseJson = await response.json();
+
+        if (!response.ok || !responseJson.success) {
+          throw new Error(responseJson.message || 'Unable to save consultation request');
+        }
+
+        setSuccess(true);
+
+        // Reset form
+        setForm({ name: "", email: "", service: "", time: "", date: "" });
+        setErrors({});
+      } catch (error) {
+        setSuccess(false);
+        setErrors((currentErrors) => ({
+          ...currentErrors,
+          submit: error.message,
+        }));
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -184,18 +228,65 @@ const ContactSection = () => {
               )}
             </div>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Time */}
+              <div>
+                <label className="text-xs font-medium text-gray-500">
+                  TIME
+                </label>
+                <input
+                  type="time"
+                  value={form.time}
+                  onChange={(e) =>
+                    setForm({ ...form, time: e.target.value })
+                  }
+                  className="w-full mt-1 px-4 py-2 bg-gray-100 rounded-lg outline-none"
+                />
+                {errors.time && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.time}
+                  </p>
+                )}
+              </div>
+
+              {/* Date */}
+              <div>
+                <label className="text-xs font-medium text-gray-500">
+                  DATE
+                </label>
+                <input
+                  type="date"
+                  value={form.date}
+                  onChange={(e) =>
+                    setForm({ ...form, date: e.target.value })
+                  }
+                  className="w-full mt-1 px-4 py-2 bg-gray-100 rounded-lg outline-none"
+                />
+                {errors.date && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.date}
+                  </p>
+                )}
+              </div>
+            </div>
+
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg shadow-md hover:bg-blue-700 transition"
+              disabled={submitting}
+              className="w-full bg-blue-600 text-white py-3 rounded-lg shadow-md hover:bg-blue-700 transition disabled:cursor-not-allowed disabled:opacity-70"
             >
-              Schedule Consultation
+              {submitting ? 'Scheduling...' : 'Schedule Consultation'}
             </button>
+
+            {errors.submit && (
+              <p className="text-red-500 text-sm mt-2">{errors.submit}</p>
+            )}
 
             {/* Success */}
             {success && (
               <p className="text-green-600 text-sm mt-2">
-                ✅ Form submitted successfully!
+                ✅ Consultation request submitted successfully!
               </p>
             )}
           </form>
