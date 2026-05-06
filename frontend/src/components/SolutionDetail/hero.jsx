@@ -7,7 +7,7 @@ export default function WhatsAppHero() {
 
   return (
     <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="max-w-297 2xl:max-w-360 mx-auto w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left: Text content */}
         <div className="order-2 lg:order-1 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 bg-blue-100 px-4 py-2 rounded-full mb-6">
@@ -16,13 +16,13 @@ export default function WhatsAppHero() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight mb-4">
-            WhatsApp
-            <br className="hidden sm:block" />
+            WhatsApp { " "}
+            <br className="sm:hidden block lg:block" />
             Automation for
-            <br className="hidden sm:block" />
+            <br className="hidden lg:block" />
             <span className="text-blue-600 block">
-              Smart Customer
-              <br className="hidden sm:block" />
+              Smart Customer {" "}
+              <br className="hidden md:block" />
               Engagement
             </span>
           </h1>
@@ -62,7 +62,7 @@ export default function WhatsAppHero() {
               <img 
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlLPXVvrZb89hahDsa48hpfy_ha8Rqb5eHRg&s" 
                 alt="WhatsApp Automation Demo" 
-                className="w-full h-auto object-cover"
+                className="w-full  md:h-125 object-cover"
               />
             </div>
           </div>

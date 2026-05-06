@@ -36,8 +36,8 @@ const capabilities = [
 
 const IntelligentCapabilities = () => {
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-linear-to-br from-blue-50 via-white to-indigo-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-297 container 2xl:max-w-360 px-6 mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
             Intelligent Capabilities

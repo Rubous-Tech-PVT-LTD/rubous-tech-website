@@ -21,8 +21,8 @@ const steps = [
 
 export default function ThreeSteps() {
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="bg-linear-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-297 container 2xl:max-w-360 px-6 mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-12">
           Three Steps to Intelligence
         </h2>

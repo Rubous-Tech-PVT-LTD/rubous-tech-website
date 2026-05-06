@@ -47,7 +47,7 @@ const ServiceLinks = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-600 text-gray-300 pt-14 pb-6">
+    <footer className="bg-[#0F172A] text-gray-300 pt-14 pb-6">
       <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6">
         
         {/* TOP GRID */}

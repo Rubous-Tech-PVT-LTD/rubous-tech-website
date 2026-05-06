@@ -52,7 +52,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
 
       {/* Body */}
       <div
-        className={`overflow-hidden transition-all duration-350 ease-in-out ${
+        className={`overflow-hidden transition-all duration-350 px-5 ease-in-out ${
           isOpen ? "max-h-48 py-5" : "max-h-0 py-0"
         }`}
       >
@@ -72,13 +72,13 @@ export default function CommonQuestions() {
   };
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="bg-linear-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 text-center mb-8">
           Common Questions
         </h2>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl 2xl:max-w-5xl mx-auto">
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}

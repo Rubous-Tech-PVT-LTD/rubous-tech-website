@@ -15,8 +15,8 @@ const SendIcon = () => (
 
 export default function BuiltForEveryScenario() {
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-linear-to-br from-blue-50 via-white to-indigo-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl container 2xl:max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 text-center mb-8">
           Built for Every Scenario
         </h2>
