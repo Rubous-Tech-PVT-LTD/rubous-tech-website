@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CareerHero from '../components/careers/CareerHero'
 import WhyJoinUs from '../components/careers/WhyJoinUs'
 import OurCulture from '../components/careers/OurCulture'
 import OpenPositions from '../components/careers/OpenPosition'
-import StartYourJourney from '../components/careers/StartJourney'
+import CTASection from '../components/careers/CTASection'
+
 
 const CareerPage = () => {
+ 
+
     return (
         <div>
             <CareerHero />
             <WhyJoinUs />
             <OurCulture />
             <OpenPositions />
-            <StartYourJourney />
+            <CTASection />
+            
         </div>
     )
 }

@@ -33,6 +33,9 @@ export default function StartYourJourney() {
   const [positions, setPositions] = useState([]);
   const [positionsLoading, setPositionsLoading] = useState(true);
   const [positionsError, setPositionsError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -40,6 +43,7 @@ export default function StartYourJourney() {
     coverMessage: "",
   });
   const [dragOver, setDragOver] = useState(false);
+  const [resumeFile, setResumeFile] = useState(null);
   const [fileName, setFileName] = useState(null);
 
   useEffect(() => {
@@ -80,7 +84,59 @@ export default function StartYourJourney() {
     e.preventDefault();
     setDragOver(false);
     const file = e.dataTransfer.files?.[0];
-    if (file) setFileName(file.name);
+    if (file) {
+      setResumeFile(file);
+      setFileName(file.name);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!form.fullName.trim() || !form.email.trim() || !form.position.trim() || !resumeFile) {
+      setSubmitError('Please complete all required fields and upload your resume.');
+      setSubmitSuccess(false);
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      setSubmitError(null);
+      setSubmitSuccess(false);
+
+      const formData = new FormData();
+      formData.append('fullName', form.fullName);
+      formData.append('email', form.email);
+      formData.append('position', form.position);
+      formData.append('coverMessage', form.coverMessage);
+      formData.append('resume', resumeFile);
+
+      const response = await fetch('/api/applications', {
+        method: 'POST',
+        body: formData
+      });
+
+      const responseJson = await response.json();
+
+      if (!response.ok || !responseJson.success) {
+        throw new Error(responseJson.message || 'Unable to submit application');
+      }
+
+      setSubmitSuccess(true);
+      setForm({
+        fullName: '',
+        email: '',
+        position: '',
+        coverMessage: ''
+      });
+      setResumeFile(null);
+      setFileName(null);
+    } catch (error) {
+      setSubmitError(error.message);
+      setSubmitSuccess(false);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleSendResume = () => {
@@ -91,7 +147,7 @@ export default function StartYourJourney() {
     <div id="start-journey" className="bg-gray-100 py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* ── FORM CARD ── */}
-        <div className="bg-white rounded-2xl p-10 w-full max-w-2xl 2xl:max-w-4xl mx-auto shadow-lg">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-10 w-full max-w-2xl 2xl:max-w-4xl mx-auto shadow-lg">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-4">
             Start Your Journey
           </h2>
@@ -168,11 +224,14 @@ export default function StartYourJourney() {
               <input
                 id="resume-input"
                 type="file"
-                accept=".pdf"
+                accept=".pdf,.doc,.docx"
                 className="hidden"
                 onChange={(e) => {
                   const file = e.target.files?.[0];
-                  if (file) setFileName(file.name);
+                  if (file) {
+                    setResumeFile(file);
+                    setFileName(file.name);
+                  }
                 }}
               />
             </div>
@@ -191,11 +250,21 @@ export default function StartYourJourney() {
 
           {/* Submit */}
           <button
+            type="submit"
+            disabled={submitting}
             className="w-full bg-blue-600 text-white font-semibold py-4 rounded-lg border-none cursor-pointer mt-4 transition-all duration-200 hover:bg-blue-700 hover:transform hover:-translate-y-0.5"
           >
-            Submit Application
+            {submitting ? 'Submitting...' : 'Submit Application'}
           </button>
-        </div>
+
+          {submitError && (
+            <p className="mt-4 text-sm text-red-500 text-center">{submitError}</p>
+          )}
+
+          {submitSuccess && (
+            <p className="mt-4 text-sm text-green-600 text-center">Application submitted successfully!</p>
+          )}
+        </form>
 
         {/* ── BLUE CTA CARD ── */}
         <div className="bg-linear-to-r from-blue-600 to-blue-500 rounded-2xl w-full max-w-4xl 2xl:max-w-6xl mx-auto mt-12 p-14 text-center shadow-lg">

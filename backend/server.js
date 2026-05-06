@@ -37,6 +37,7 @@ if (process.env.NODE_ENV === 'development') {
 const bookingRoutes = require('./routes/bookingRoutes');
 const pricingRoutes = require('./routes/pricingRoutes');
 const careerRoutes = require('./routes/careerRoutes');
+const applicationRoutes = require('./routes/applicationRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const blogRoutes = require('./routes/blogRoutes');
@@ -50,6 +51,7 @@ app.get('/', (req, res) => {
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/pricing', pricingRoutes);
 app.use('/api/careers', careerRoutes);
+app.use('/api/applications', applicationRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/blogs', blogRoutes);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import JobCard from "./JobCard";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Add to index.html:
 // <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -11,10 +11,10 @@ const badgeStyles = {
 };
 
 export default function OpenPositions() {
-  const [selectedJob, setSelectedJob] = useState(null);
   const [positions, setPositions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch positions from backend Career model
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function OpenPositions() {
         if (responseJson.success && responseJson.data) {
           // Map backend Career model fields to frontend format
           const mappedPositions = responseJson.data.map(career => ({
-            id: career._id,
+            id: career.id || career._id,
             title: career.title,
             badge: career.department,
             badgeType: career.department.toLowerCase(),
@@ -64,11 +64,7 @@ export default function OpenPositions() {
   }, []);
 
   const handleApplyClick = (job) => {
-    setSelectedJob(job);
-  };
-
-  const handleCloseJobCard = () => {
-    setSelectedJob(null);
+    navigate(`/careers/${job.id}`);
   };
 
   return (
@@ -158,13 +154,6 @@ export default function OpenPositions() {
         </div>
       </div>
 
-      {/* Job Card Modal */}
-      {selectedJob && (
-        <JobCard 
-          job={selectedJob} 
-          onClose={handleCloseJobCard} 
-        />
-      )}
     </>
   );
 }
