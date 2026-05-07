@@ -219,7 +219,7 @@ const FeaturesSection = () => (
         {techPills.slice(0, 4).map(({ icon, label }) => (
           <div
             key={label}
-            className="inline-flex items-center gap-[7px] bg-white border-[1.5px] border-[#e2e4ef] rounded-full px-5 py-[9px] text-[13.5px] font-medium text-[#374151] whitespace-nowrap"
+            className="inline-flex items-center gap-1.75 bg-white border-[1.5px] border-[#e2e4ef] rounded-full px-5 py-[9px] text-[13.5px] font-medium text-[#374151] whitespace-nowrap"
           >
             <span className="text-[#3d52d5] flex">{icon}</span>
             {label}
@@ -282,7 +282,7 @@ const CTAAndFAQ = () => (
       <h2 className="text-[26px] font-bold text-[#0f1117] text-center mb-9 tracking-[-0.3px]">
         Common Questions
       </h2>
-      <div className="flex flex-col gap-4 max-w-[700px] mx-auto">
+      <div className="flex flex-col gap-4 max-w-175 mx-auto">
         {faqs.map(({ question, answer }) => (
           <div key={question} className="bg-white rounded-2xl px-7 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
             <p className="text-[14px] font-bold text-[#0f1117] mb-2.5">{question}</p>

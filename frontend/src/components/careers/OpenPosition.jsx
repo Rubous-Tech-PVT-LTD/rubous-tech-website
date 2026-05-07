@@ -132,8 +132,8 @@ export default function OpenPositions() {
                   </div>
 
                   {/* Right */}
-                  <div className="flex items-center gap-6 flex-shrink-0 mt-4 lg:mt-0">
-                    <div className="text-right">
+                  <div className="flex max-sm:flex-col gap-4 sm:gap-6 shrink-0 sm:mt-4 lg:mt-0">
+                    <div className="sm:text-right">
                       <div className="text-sm font-semibold text-gray-800 mb-1">
                         {pos.location}
                       </div>

@@ -9,8 +9,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="bg-[#f8f9ff] min-h-[calc(100vh-62px)] flex flex-col overflow-hidden">
-      <div className="max-w-297 2xl:max-w-360 mx-auto px-6 grid md:grid-cols-2 gap-10 items-center flex-1 w-full">
+    <section className="bg-[#f8f9ff] py-16  flex flex-col overflow-hidden">
+      <div className="max-w-297 2xl:max-w-360 mx-auto px-6 grid  md:grid-cols-2 gap-10 items-center flex-1 w-full">
 
         {/* LEFT CONTENT */}
         <div>
@@ -50,7 +50,7 @@ const Hero = () => {
         <div className="relative flex 2xl:justify-end justify-center">
           <div className="bg-white p-4 rounded-3xl shadow-lg">
             <img
-              src="/hero-img.webp"
+              src="/hero-img.png"
               alt="dashboard"
               className="rounded-xl w-full max-w-md lg:max-w-lg"
             />
