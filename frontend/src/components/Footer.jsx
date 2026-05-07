@@ -38,7 +38,7 @@ const ServiceLinks = () => {
     <ul className="space-y-2 text-sm">
       {services.map((s) => (
         <li key={s.id}>
-          <NavLink to={`/services/${s.id}`} className="hover:text-white">{s.title}</NavLink>
+          <NavLink to={`/solution/${s.id}`} className="hover:text-white">{s.title}</NavLink>
         </li>
       ))}
     </ul>
@@ -106,20 +106,20 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-white" />
                 <a href="mailto:hello@ruboustech.com" className="hover:text-white">
-                  hello@ruboustech.com
+                  Info@ruboustech.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-white" />
                 <a href="tel:+15550001234" className="hover:text-white">
-                  +1 (555) 000-1234
+                  +91 60005888754
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-white mt-1" />
                 <span>
-                  123 Innovation Drive,<br />
-                  Silicon Valley, CA 94025
+                  Dehradun,<br />
+                  Uttarakhand 248001
                 </span>
               </li>
             </ul>

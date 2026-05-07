@@ -120,20 +120,20 @@ const Solutions = () => {
               return (
                 <div
                   key={item.id}
-                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition cursor-pointer"
+                  className="group bg-white rounded-2xl p-6 shadow-sm border border-transparent transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-xl hover:border-blue-500 hover:ring-2 hover:ring-blue-200 hover:bg-blue-50/40"
                   onClick={() => handleCardClick(item)}
                 >
                   <div
-                    className={`w-10 h-10 flex items-center justify-center rounded-lg mb-4 ${iconClasses}`}
+                    className={`w-10 h-10 flex items-center justify-center rounded-lg mb-4 transition-colors duration-300 ${iconClasses} group-hover:bg-blue-100`}
                   >
                     <Icon size={20} />
                   </div>
 
-                  <h3 className="font-semibold text-gray-800 mb-2">
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-700 transition-colors duration-300">
                     {item.title}
                   </h3>
 
-                  <p className="text-gray-500 text-sm mb-4">
+                  <p className="text-gray-500 text-sm mb-4 group-hover:text-gray-700 transition-colors duration-300">
                     {item.desc}
                   </p>
 
@@ -143,7 +143,7 @@ const Solutions = () => {
                         key={`${item.id}-${i}`}
                         className="flex items-center gap-2 text-sm text-gray-600"
                       >
-                        <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
+                          <span className="w-2 h-2 bg-blue-600 rounded-full transition-transform duration-300 group-hover:scale-110"></span>
                         {point}
                       </li>
                     ))}
