@@ -1,4 +1,5 @@
 const Service = require('../models/Service');
+require('../models/ServiceDetail');
 
 // @desc    Get all active services
 // @route   GET /api/services
@@ -33,7 +34,9 @@ exports.getServiceById = async (req, res) => {
 			});
 		}
 
-		const service = await Service.findOne({ id: serviceId, isActive: true }).lean();
+		const service = await Service.findOne({ id: serviceId, isActive: true })
+			.populate('serviceDetail')
+			.lean();
 
 		if (!service) {
 			return res.status(404).json({

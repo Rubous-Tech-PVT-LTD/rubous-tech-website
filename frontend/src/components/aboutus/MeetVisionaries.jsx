@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const MeetVisionaries = () => {
   const [team, setTeam] = useState([]);
@@ -21,6 +22,7 @@ const MeetVisionaries = () => {
 
         if (responseJson.success && Array.isArray(responseJson.data)) {
           const mappedTeam = responseJson.data.map((member) => ({
+            id: member.id,
             name: member.name,
             role: member.role,
             img: member.image,
@@ -77,15 +79,16 @@ const MeetVisionaries = () => {
         {!loading && !error && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((member) => (
-              <div
-                key={member.name}
-                className="bg-gray-50 rounded-2xl p-4 shadow-sm hover:shadow-md transition"
+              <Link
+                key={member.id || member.name}
+                to={`/team/${member.id}`}
+                className="bg-gray-50 rounded-2xl p-4 shadow-sm hover:shadow-md transition block group focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <div className="rounded-xl overflow-hidden mb-4">
                   <img
                     src={member.img}
                     alt={member.name}
-                    className="w-full h-56 object-cover"
+                    className="w-full h-56 object-cover transition duration-300 group-hover:scale-[1.02]"
                   />
                 </div>
 
@@ -93,7 +96,7 @@ const MeetVisionaries = () => {
                   {member.name}
                 </h3>
                 <p className="text-blue-600 text-xs mt-1">{member.role}</p>
-              </div>
+              </Link>
             ))}
           </div>
         )}
