@@ -1,9 +1,15 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CTASection = ({ serviceDetail }) => {
+  const navigate = useNavigate();
   const cta = serviceDetail?.cta;
 
-  if (!cta) {
+  const handleExploreServices = () => {
+    navigate('/#solutions');
+  };
+
+  if (!cta || !cta.title) {
     return null;
   }
 
@@ -26,12 +32,12 @@ const CTASection = ({ serviceDetail }) => {
           
           {/* Primary Button */}
           <button className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-gray-100 transition inline-flex items-center gap-2">
-            {cta.primaryButton}
+            Get Started
           </button>
 
           {/* Secondary Button */}
-          <button className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition font-semibold inline-flex items-center gap-2">
-            {cta.secondaryButton}
+          <button onClick={handleExploreServices} className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition font-semibold inline-flex items-center gap-2">
+            Explore Services
             <ArrowRight className="h-5 w-5" />
           </button>
 

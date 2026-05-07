@@ -4,6 +4,13 @@ export default function WhatsAppHero({ service, serviceDetail }) {
   const [primaryHover, setPrimaryHover] = useState(false);
   const [secondaryHover, setSecondaryHover] = useState(false);
 
+  const handleSeeHowItWorks = () => {
+    const section = document.getElementById('how-it-works');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const hero = serviceDetail?.hero;
   const heroTitle = hero?.title || service?.title || '';
   const heroDescription = hero?.description || service?.tagline || '';
@@ -43,6 +50,7 @@ export default function WhatsAppHero({ service, serviceDetail }) {
               Book Demo
             </button>
             <button
+              onClick={handleSeeHowItWorks}
               className={`bg-white text-gray-800 border border-gray-300 rounded-lg px-8 py-3 font-medium transition-all duration-200 hover:border-blue-600 hover:text-blue-600 ${
                 secondaryHover ? "border-blue-600 text-blue-600" : ""
               }`}

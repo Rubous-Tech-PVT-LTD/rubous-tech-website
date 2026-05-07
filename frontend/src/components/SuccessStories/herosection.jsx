@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, Settings2, Sparkles, TrendingUp } from "lucide-react";
 
 const stats = [
@@ -20,6 +21,16 @@ const stats = [
 ];
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
+  const handleBookConsultation = () => {
+    navigate('/#contact');
+  };
+
+  const handleViewSolutions = () => {
+    navigate('/#solutions');
+  };
+
   return (
     <div className="bg-[#f8f9ff] pt-[62px] pb-20 lg:pb-24 overflow-hidden">
       <div className="max-w-297 2xl:max-w-360 mx-auto px-6 grid lg:grid-cols-[1.02fr_1fr] gap-12 lg:gap-16 items-center">
@@ -37,11 +48,11 @@ export default function HeroSection() {
             excellence.
           </p>
           <div className="flex items-center gap-4 mt-9 flex-wrap">
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-flex items-center gap-2">
+            <button onClick={handleBookConsultation} className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-flex items-center gap-2">
               Book Consultation
               <ArrowRight className="h-4 w-4" />
             </button>
-            <button className="bg-blue-100 text-blue-600 px-5 py-3 rounded-lg hover:bg-blue-200 transition">
+            <button onClick={handleViewSolutions} className="bg-blue-100 text-blue-600 px-5 py-3 rounded-lg hover:bg-blue-200 transition">
               View Solutions
             </button>
           </div>

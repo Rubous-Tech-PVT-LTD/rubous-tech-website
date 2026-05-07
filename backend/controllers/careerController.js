@@ -5,6 +5,7 @@ const Career = require('../models/Career');
 exports.getCareers = async (req, res) => {
   try {
     const activeJobs = await Career.find({ isActive: true })
+      .select('-department')
       .sort({ postedAt: -1 })
       .lean();
 
@@ -37,7 +38,9 @@ exports.getCareerById = async (req, res) => {
   try {
     const { jobId } = req.params;
 
-    const job = await Career.findOne({ id: jobId.toLowerCase(), isActive: true }).lean();
+    const job = await Career.findOne({ id: jobId.toLowerCase(), isActive: true })
+      .select('-department')
+      .lean();
 
     if (!job) {
       return res.status(404).json({

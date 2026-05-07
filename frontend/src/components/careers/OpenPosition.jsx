@@ -4,12 +4,6 @@ import { useNavigate } from "react-router-dom";
 // Add to index.html:
 // <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 
-const badgeStyles = {
-  engineering: "bg-blue-100 text-blue-600",
-  product: "bg-blue-100 text-blue-600",
-  growth: "bg-green-100 text-green-600",
-};
-
 export default function OpenPositions() {
   const [positions, setPositions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,12 +29,9 @@ export default function OpenPositions() {
           const mappedPositions = responseJson.data.map(career => ({
             id: career.id || career._id,
             title: career.title,
-            badge: career.department,
-            badgeType: career.department.toLowerCase(),
             desc: career.description,
             location: career.location,
             type: career.type,
-            department: career.department,
             description: career.description,
             responsibilities: career.responsibilities || [],
             requirements: career.requirements || [],
@@ -118,14 +109,9 @@ export default function OpenPositions() {
                 >
                   {/* Left */}
                   <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <h3 className="text-xl font-bold text-gray-800">
-                        {pos.title}
-                      </h3>
-                      <span className={`text-xs font-semibold uppercase px-3 py-1 rounded-md ${badgeStyles[pos.badgeType]}`}>
-                        {pos.badge}
-                      </span>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                      {pos.title}
+                    </h3>
                     <p className="text-gray-500 leading-relaxed max-w-2xl">
                       {pos.desc}
                     </p>

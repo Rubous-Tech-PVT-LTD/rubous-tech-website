@@ -13,11 +13,6 @@ const CareerSchema = new mongoose.Schema({
     required: [true, 'Please add a job title'],
     trim: true
   },
-  department: {
-    type: String,
-    required: [true, 'Please add a department'],
-    trim: true
-  },
   location: {
     type: String,
     required: [true, 'Please add a location'],

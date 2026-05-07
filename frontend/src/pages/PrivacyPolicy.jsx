@@ -54,7 +54,7 @@ const policySections = [
 const PrivacyPolicy = () => {
   return (
     <main className="min-h-screen bg-[#f8f9ff] py-16 overflow-hidden">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+      <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6 text-center">
         <span className="inline-block bg-blue-100 text-blue-600 text-xs font-semibold px-4 py-1 rounded-full mb-5 uppercase">
           Legal
         </span>

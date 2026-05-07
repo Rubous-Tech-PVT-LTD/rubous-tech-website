@@ -6,7 +6,6 @@ const careers = [
   {
     id: 'frontend-developer-001',
     title: 'Frontend Developer',
-    department: 'Engineering',
     location: 'Remote / NYC',
     type: 'Full-time',
     experienceLevel: 'Mid-level',
@@ -36,7 +35,6 @@ const careers = [
   {
     id: 'backend-developer-002',
     title: 'Backend Developer',
-    department: 'Engineering',
     location: 'Remote',
     type: 'Full-time',
     experienceLevel: 'Senior',
@@ -66,7 +64,6 @@ const careers = [
   {
     id: 'automation-engineer-003',
     title: 'Automation Engineer',
-    department: 'Product',
     location: 'Remote / London',
     type: 'Full-time',
     experienceLevel: 'Mid-level',
@@ -96,7 +93,6 @@ const careers = [
   {
     id: 'marketing-intern-004',
     title: 'Marketing Intern',
-    department: 'Growth',
     location: 'Remote',
     type: 'Internship',
     experienceLevel: 'Entry-level',
@@ -141,7 +137,7 @@ const seedCareers = async () => {
     
     console.log('Sample careers:');
     insertedCareers.forEach((career, index) => {
-      console.log(`${index + 1}. ${career.title} - ${career.department}`);
+      console.log(`${index + 1}. ${career.title}`);
     });
 
     process.exit(0);

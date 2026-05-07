@@ -90,9 +90,7 @@ const detailTemplates = {
     ],
     cta: {
       title: 'Ready to automate customer conversations?',
-      description: 'Our team can help you design and launch a chat workflow that fits your business logic.',
-      primaryButton: 'Book Consultation',
-      secondaryButton: 'Explore Services'
+      description: 'Our team can help you design and launch a chat workflow that fits your business logic.'
     }
   },
   'booking-automation-system': {
@@ -110,9 +108,7 @@ const detailTemplates = {
     ],
     cta: {
       title: 'Ready to automate bookings?',
-      description: 'We can help you build a booking flow that converts more inquiries into confirmed appointments.',
-      primaryButton: 'Book Consultation',
-      secondaryButton: 'Explore Services'
+      description: 'We can help you build a booking flow that converts more inquiries into confirmed appointments.'
     }
   },
   'whatsapp-automation': {
@@ -130,9 +126,7 @@ const detailTemplates = {
     ],
     cta: {
       title: 'Ready to scale WhatsApp engagement?',
-      description: 'We can help you set up a dependable WhatsApp automation workflow for support and sales.',
-      primaryButton: 'Book Consultation',
-      secondaryButton: 'Explore Services'
+      description: 'We can help you set up a dependable WhatsApp automation workflow for support and sales.'
     }
   },
   'lead-management-dashboard': {
@@ -150,9 +144,7 @@ const detailTemplates = {
     ],
     cta: {
       title: 'Ready to centralize your lead flow?',
-      description: 'We can help your team get a clearer view of every lead from one dashboard.',
-      primaryButton: 'Book Consultation',
-      secondaryButton: 'Explore Services'
+      description: 'We can help your team get a clearer view of every lead from one dashboard.'
     }
   },
   'website-app-development': {
@@ -170,9 +162,7 @@ const detailTemplates = {
     ],
     cta: {
       title: 'Ready to build your next product?',
-      description: 'We can help you design and ship a website or app that fits your growth goals.',
-      primaryButton: 'Book Consultation',
-      secondaryButton: 'Explore Services'
+      description: 'We can help you design and ship a website or app that fits your growth goals.'
     }
   },
   'business-automation-core': {
@@ -190,9 +180,7 @@ const detailTemplates = {
     ],
     cta: {
       title: 'Ready to automate your business?',
-      description: 'We can help you build a reliable automation foundation across operations, sales, and support.',
-      primaryButton: 'Book Consultation',
-      secondaryButton: 'Explore Services'
+      description: 'We can help you build a reliable automation foundation across operations, sales, and support.'
     }
   }
 };

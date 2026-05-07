@@ -96,9 +96,7 @@ const ServiceDetailSchema = new mongoose.Schema(
     },
     cta: {
       title: { type: String, required: [true, 'Please add a CTA title'], trim: true },
-      description: { type: String, required: [true, 'Please add a CTA description'], trim: true },
-      primaryButton: { type: String, required: [true, 'Please add a CTA primary button label'], trim: true },
-      secondaryButton: { type: String, required: [true, 'Please add a CTA secondary button label'], trim: true }
+      description: { type: String, required: [true, 'Please add a CTA description'], trim: true }
     }
   },
   {

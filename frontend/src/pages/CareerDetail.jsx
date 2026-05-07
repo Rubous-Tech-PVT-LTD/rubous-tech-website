@@ -65,8 +65,6 @@ export default function CareerDetail() {
         <section className="pb-8 border-b border-gray-200">
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">{job.title}</h1>
           <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 mb-5">
-            <span>{job.department}</span>
-            <span className="text-gray-400">|</span>
             <span>{job.type}</span>
             <span className="text-gray-400">|</span>
             <span>{job.location}</span>
