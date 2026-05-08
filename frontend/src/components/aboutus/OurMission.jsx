@@ -28,9 +28,9 @@ const OurMission = () => {
 
         {/* Right Image */}
         <div className="flex justify-center md:justify-end">
-          <div className="rounded-2xl overflow-hidden shadow-sm w-70 sm:w-[320px] md:w-90">
+          <div className="rounded-2xl overflow-hidden shadow-sm w-70 sm:w-[320px] md:w-[480px]">
             <img
-              src="/mission-img.webp "
+              src="/smart-technology.png "
               alt="Team discussion"
               className="w-full h-full object-cover shadow-xl"
             />

@@ -56,9 +56,9 @@ const AboutHero = () => {
 
         {/* Right Image */}
         <div className="relative flex justify-center lg:justify-end">
-          <div className="relative bg-[#dfe3f0] rounded-[40px] p-4 rotate-[-4deg] shadow-lg max-w-md w-full">
+          <div className="relative bg-[#dfe3f0] rounded-[40px] p-4 rotate-[-4deg] shadow-lg max-w-125 w-full">
             <img
-              src="/aboutHero.webp"
+              src="/about-hero.png"
               alt="Smart automation system"
               className="w-full rounded-4xl object-cover rotate-[4deg]"
             />

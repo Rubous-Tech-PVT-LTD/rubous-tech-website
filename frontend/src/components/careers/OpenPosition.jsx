@@ -73,7 +73,7 @@ export default function OpenPositions() {
                 Find your next challenge in our growing team.
               </p>
             </div>
-            <div className="bg-blue-100 text-blue-600 text-xs font-semibold px-4 py-2 rounded-lg uppercase">
+            <div className="bg-blue-100 text-blue-600 max-w-28 text-xs font-semibold px-4 py-2 rounded-lg uppercase">
               {positions.length} Open Roles
             </div>
           </div>

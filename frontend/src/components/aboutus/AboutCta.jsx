@@ -16,9 +16,9 @@ const AboutCta = () => {
         </p>
 
         {/* Button */}
-        <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-xl shadow-md transition">
-          Contact Us
-        </button>
+        <a href="mailto:info@rubous.tech" target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium px-6 py-3 rounded-xl shadow-md transition">
+            Contact Us
+          </a>
 
       </div>
     </section>

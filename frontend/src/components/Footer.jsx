@@ -105,7 +105,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-white" />
-                <a href="mailto:hello@ruboustech.com" className="hover:text-white">
+                <a href="mailto:info@ruboustech.com" className="hover:text-white">
                   info@ruboustech.com
                 </a>
               </li>

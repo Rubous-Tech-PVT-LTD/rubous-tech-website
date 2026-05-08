@@ -57,18 +57,15 @@ export default function OurCulture() {
             {/* Top-left: team on dark bg with label */}
             <div className="col-span-1 row-span-1 bg-[#111c3a] rounded-[14px] overflow-hidden relative">
               <img
-                src="https://i.ibb.co/zVJMfFpJ/Team-activity.png"
+                src="https://i.ibb.co/XxqpqC9x/carrer-img1.png"
                 alt="Team activity"
                 className="w-full h-full object-cover block"
               />
-              <div className="absolute bottom-[10px] left-0 right-0 text-center text-[9.5px] font-bold tracking-[0.14em] text-[rgba(255,255,255,0.55)] uppercase">
-                Team Activity
-              </div>
             </div>
             {/* Top-right: modern office */}
             <div className="col-span-1 row-span-1 bg-[#8a9ab0] rounded-[14px] overflow-hidden">
               <img
-                src="https://i.ibb.co/xSfyBsn4/Office-space.png"
+                src="https://i.ibb.co/nNKq3vSJ/career-img2.png"
                 alt="Modern office"
                 className="w-full h-full object-cover block"
               />
@@ -76,7 +73,7 @@ export default function OurCulture() {
             {/* Bottom-left: two colleagues */}
             <div className="col-span-1 row-span-1 bg-[#c8cdd8] rounded-[14px] overflow-hidden">
               <img
-                src="https://i.ibb.co/1t4PbVQG/Collaboration.png"
+                src="https://i.ibb.co/6cDf6zDn/career-img3.png"
                 alt="Colleagues collaborating"
                 className="w-full h-full object-cover block"
               />
@@ -84,7 +81,7 @@ export default function OurCulture() {
             {/* Bottom-right: dark abstract red burst */}
             <div className="col-span-1 row-span-1 bg-[#0a0a14] rounded-[14px] overflow-hidden">
               <img
-                src="https://i.ibb.co/35XjJm09/Celebration.png"
+                src="https://i.ibb.co/9382hW9R/career-img4.png"
                 alt="Creative energy"
                 className="w-full h-full object-cover block mix-blend-screen opacity-[0.85]"
               />

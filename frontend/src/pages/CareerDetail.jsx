@@ -86,10 +86,6 @@ export default function CareerDetail() {
 
           <div className="flex flex-wrap justify-center gap-3 text-sm mb-6">
             <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-700">
-              {job.department}
-            </span>
-
-            <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-700">
               {job.type}
             </span>
 
@@ -101,10 +97,6 @@ export default function CareerDetail() {
               {job.experienceLevel}
             </span>
           </div>
-
-          <p className="max-w-3xl mx-auto text-gray-500 leading-8 text-[15px]">
-            {job.description}
-          </p>
         </div>
 
         {/* CONTENT */}
