@@ -63,7 +63,7 @@ const Footer = () => {
                     />
                   </NavLink>
                  <br/>
-            <p className="text-sm text-white mb-6">
+            <p className="text-sm text-gray-300 mb-6">
               Revolutionizing the digital landscape with intelligent,
               AI-driven automation solutions.
             </p>
@@ -106,7 +106,7 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-white" />
                 <a href="mailto:hello@ruboustech.com" className="hover:text-white">
-                  Info@ruboustech.com
+                  info@ruboustech.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -129,13 +129,13 @@ const Footer = () => {
         {/* DIVIDER */}
         <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           
-          <p className="text-white" >&copy; 2026 Rubous Tech Private Limited. All rights reserved.</p>
+          <p className="text-gray-400" >&copy; 2026 Rubous Tech Private Limited. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
-            <NavLink to="/privacy" className="text-white hover:text-gray-300">
+            <NavLink to="/privacy" className="text-gray-400 hover:text-gray-100">
               Privacy Policy
             </NavLink>
-            <NavLink to="/terms" className="text-white hover:text-gray-300">
+            <NavLink to="/terms" className="text-gray-400 hover:text-gray-100">
               Terms and Conditions
             </NavLink>
           </div>
