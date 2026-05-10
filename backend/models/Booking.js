@@ -14,13 +14,18 @@ const BookingSchema = new mongoose.Schema({
       'Please add a valid email'
     ]
   },
-  date: {
-    type: String, // String in YYYY-MM-DD format to match front-end
-    required: [true, 'Please add a date']
-  },
-  timeSlot: {
+  service: {
     type: String,
-    required: [true, 'Please add a time slot']
+    trim: true
+  },
+  time: {
+    type: String,
+    trim: true
+  },
+  date: {
+    type: String,
+    required: true,
+    trim: true
   },
   status: {
     type: String,

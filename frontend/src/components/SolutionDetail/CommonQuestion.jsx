@@ -1,29 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from 'lucide-react';
 
-const faqs = [
-  {
-    question: "Is this an official WhatsApp API?",
-    answer:
-      "Yes, we use official WhatsApp Business API provided by Meta. This ensures full compliance, reliability, and access to all platform features.",
-  },
-  {
-    question: "How many messages can I send daily?",
-    answer:
-      "Your daily message limit depends on your plan and WhatsApp tier. Starter plans begin at 1,000 messages/day and can scale up to unlimited with higher tiers.",
-  },
-  {
-    question: "Can I integrate it with my CRM?",
-    answer:
-      "Absolutely. We support integrations with popular CRMs like HubSpot, Salesforce, Zoho, and more via our REST API and native connectors.",
-  },
-  {
-    question: "Do you support rich media messages?",
-    answer:
-      "Yes! You can send images, videos, audio files, documents, and interactive buttons or list messages through our platform.",
-  },
-];
-
 const ChevronIcon = () => (
   <ChevronDown className="w-3.5 h-3.5" />
 );
@@ -52,7 +29,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
 
       {/* Body */}
       <div
-        className={`overflow-hidden transition-all duration-350 ease-in-out ${
+        className={`overflow-hidden transition-all duration-350 px-5 ease-in-out ${
           isOpen ? "max-h-48 py-5" : "max-h-0 py-0"
         }`}
       >
@@ -64,22 +41,28 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
   );
 };
 
-export default function CommonQuestions() {
+export default function CommonQuestions({ serviceDetail }) {
   const [openIndex, setOpenIndex] = useState(null);
+  const faqItems = Array.isArray(serviceDetail?.faq?.items) ? serviceDetail.faq.items : [];
+  const title = serviceDetail?.faq?.title || '';
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  if (faqItems.length === 0) {
+    return null;
+  }
+
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="bg-linear-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 text-center mb-8">
-          Common Questions
+          {title}
         </h2>
 
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
+        <div className="max-w-3xl 2xl:max-w-5xl mx-auto">
+          {faqItems.map((faq, index) => (
             <FAQItem
               key={index}
               question={faq.question}

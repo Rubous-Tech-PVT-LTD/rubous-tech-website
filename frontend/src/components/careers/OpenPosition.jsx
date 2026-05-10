@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import JobCard from "./JobCard";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Add to index.html:
 // <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 
-const badgeStyles = {
-  engineering: "bg-blue-100 text-blue-600",
-  product: "bg-blue-100 text-blue-600",
-  growth: "bg-green-100 text-green-600",
-};
-
 export default function OpenPositions() {
-  const [selectedJob, setSelectedJob] = useState(null);
   const [positions, setPositions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch positions from backend Career model
   useEffect(() => {
@@ -33,14 +27,11 @@ export default function OpenPositions() {
         if (responseJson.success && responseJson.data) {
           // Map backend Career model fields to frontend format
           const mappedPositions = responseJson.data.map(career => ({
-            id: career._id,
+            id: career.id || career._id,
             title: career.title,
-            badge: career.department,
-            badgeType: career.department.toLowerCase(),
             desc: career.description,
             location: career.location,
             type: career.type,
-            department: career.department,
             description: career.description,
             responsibilities: career.responsibilities || [],
             requirements: career.requirements || [],
@@ -64,11 +55,7 @@ export default function OpenPositions() {
   }, []);
 
   const handleApplyClick = (job) => {
-    setSelectedJob(job);
-  };
-
-  const handleCloseJobCard = () => {
-    setSelectedJob(null);
+    navigate(`/careers/${job.id}`);
   };
 
   return (
@@ -86,7 +73,7 @@ export default function OpenPositions() {
                 Find your next challenge in our growing team.
               </p>
             </div>
-            <div className="bg-blue-100 text-blue-600 text-xs font-semibold px-4 py-2 rounded-lg uppercase">
+            <div className="bg-blue-100 text-blue-600 max-w-28 text-xs font-semibold px-4 py-2 rounded-lg uppercase">
               {positions.length} Open Roles
             </div>
           </div>
@@ -122,22 +109,17 @@ export default function OpenPositions() {
                 >
                   {/* Left */}
                   <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <h3 className="text-xl font-bold text-gray-800">
-                        {pos.title}
-                      </h3>
-                      <span className={`text-xs font-semibold uppercase px-3 py-1 rounded-md ${badgeStyles[pos.badgeType]}`}>
-                        {pos.badge}
-                      </span>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                      {pos.title}
+                    </h3>
                     <p className="text-gray-500 leading-relaxed max-w-2xl">
                       {pos.desc}
                     </p>
                   </div>
 
                   {/* Right */}
-                  <div className="flex items-center gap-6 flex-shrink-0 mt-4 lg:mt-0">
-                    <div className="text-right">
+                  <div className="flex max-sm:flex-col gap-4 sm:gap-6 shrink-0 sm:mt-4 lg:mt-0">
+                    <div className="sm:text-right">
                       <div className="text-sm font-semibold text-gray-800 mb-1">
                         {pos.location}
                       </div>
@@ -158,13 +140,6 @@ export default function OpenPositions() {
         </div>
       </div>
 
-      {/* Job Card Modal */}
-      {selectedJob && (
-        <JobCard 
-          job={selectedJob} 
-          onClose={handleCloseJobCard} 
-        />
-      )}
     </>
   );
 }

@@ -30,9 +30,9 @@ const PlanSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
-    bestFor: {
-      type: String,
-      default: '',
+    features: {
+      type: [String],
+      default: [],
       trim: true
     }
   },

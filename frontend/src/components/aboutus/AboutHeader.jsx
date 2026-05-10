@@ -10,7 +10,7 @@ const AboutHero = () => {
   };
 
   return (
-    <section className="w-full min-h-[calc(100vh-60px)] bg-[#f3f3f3] flex items-center px-6 py-12">
+    <section className="w-full py-16 bg-[#f3f3f3] flex items-center px-6 ">
       <div className="max-w-297 container 2xl:max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         
         {/* Left Content */}
@@ -56,9 +56,9 @@ const AboutHero = () => {
 
         {/* Right Image */}
         <div className="relative flex justify-center lg:justify-end">
-          <div className="relative bg-[#dfe3f0] rounded-[40px] p-4 rotate-[-4deg] shadow-lg max-w-md w-full">
+          <div className="relative bg-[#dfe3f0] rounded-[40px] p-4 rotate-[-4deg] shadow-lg max-w-125 w-full">
             <img
-              src="/aboutHero.webp"
+              src="/about-hero.png"
               alt="Smart automation system"
               className="w-full rounded-4xl object-cover rotate-[4deg]"
             />

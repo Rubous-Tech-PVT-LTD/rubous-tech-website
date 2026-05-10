@@ -1,10 +1,3 @@
-import React from "react";
-import WhyJoinUs from "./WhyJoinUs";
-import OurCulture from "./OurCulture";
-import OpenPositions from "./OpenPosition";
-import StartJourney from "./StartJourney";
-import Footer from "../Footer";
-
 export default function CareerHero() {
   const handleViewOpenings = () => {
     const openPositions = document.getElementById('open-positions');

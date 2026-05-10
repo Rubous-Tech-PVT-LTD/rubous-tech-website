@@ -38,7 +38,7 @@ const ServiceLinks = () => {
     <ul className="space-y-2 text-sm">
       {services.map((s) => (
         <li key={s.id}>
-          <NavLink to={`/services/${s.id}`} className="hover:text-white">{s.title}</NavLink>
+          <NavLink to={`/solution/${s.id}`} className="hover:text-white">{s.title}</NavLink>
         </li>
       ))}
     </ul>
@@ -47,7 +47,7 @@ const ServiceLinks = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-600 text-gray-300 pt-14 pb-6">
+    <footer className="bg-[#0B1D3A] text-gray-300 pt-14 pb-6">
       <div className="max-w-297 container 2xl:max-w-360 mx-auto px-6">
         
         {/* TOP GRID */}
@@ -63,7 +63,7 @@ const Footer = () => {
                     />
                   </NavLink>
                  <br/>
-            <p className="text-sm text-white mb-6">
+            <p className="text-sm text-gray-300 mb-6">
               Revolutionizing the digital landscape with intelligent,
               AI-driven automation solutions.
             </p>
@@ -105,21 +105,21 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-white" />
-                <a href="mailto:hello@ruboustech.com" className="hover:text-white">
-                  hello@ruboustech.com
+                <a href="mailto:info@ruboustech.com" className="hover:text-white">
+                  info@ruboustech.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-white" />
                 <a href="tel:+15550001234" className="hover:text-white">
-                  +1 (555) 000-1234
+                  +91 60005888754
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-white mt-1" />
                 <span>
-                  123 Innovation Drive,<br />
-                  Silicon Valley, CA 94025
+                  Dehradun,<br />
+                  Uttarakhand 248001
                 </span>
               </li>
             </ul>
@@ -129,13 +129,13 @@ const Footer = () => {
         {/* DIVIDER */}
         <div className="border-t border-gray-700 mt-10 text-center pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           
-          <p className="text-white" >&copy; 2026 Rubous Tech Private Limited. All rights reserved.</p>
+          <p className="text-gray-400" >&copy; 2026 Rubous Tech Private Limited. All rights reserved.</p>
 
           <div className="flex gap-6 mt-3 md:mt-0">
-            <NavLink to="/privacy" className="text-white hover:text-gray-300">
+            <NavLink to="/privacy" className="text-gray-400 hover:text-gray-100">
               Privacy Policy
             </NavLink>
-            <NavLink to="/terms" className="text-white hover:text-gray-300">
+            <NavLink to="/terms" className="text-gray-400 hover:text-gray-100">
               Terms and Conditions
             </NavLink>
           </div>

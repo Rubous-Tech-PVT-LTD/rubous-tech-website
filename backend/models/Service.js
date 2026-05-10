@@ -28,6 +28,11 @@ const ServiceSchema = new mongoose.Schema(
       type: [String],
       default: []
     },
+    serviceDetail: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ServiceDetail',
+      default: null
+    },
     color: {
       type: String,
       default: 'blue',

@@ -1,14 +1,15 @@
 import React from "react";
 
 const Trusted = () => {
-  const logos = [
-    "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
-  ];
-
+const logos = [
+  "https://cdn.simpleicons.org/figma",
+  "https://cdn.simpleicons.org/notion",
+  "https://cdn.simpleicons.org/asana",
+  "https://cdn.simpleicons.org/airtable",
+  "https://cdn.simpleicons.org/trello",
+  "https://cdn.simpleicons.org/clickup",
+  "https://cdn.simpleicons.org/framer",
+];
   return (
     <section className="bg-[#f3f6ff] py-12 overflow-hidden">
       <div className="max-w-297 2xl:max-w-360 mx-auto text-center px-6">

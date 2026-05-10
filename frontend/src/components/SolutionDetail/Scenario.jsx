@@ -1,24 +1,22 @@
 import React from "react";
 import { Send } from 'lucide-react';
 
-const tabs = [
-  "Customer support",
-  "Order tracking",
-  "Promotions",
-  "Appointment reminders",
-  "Lead nurturing",
-];
+export default function BuiltForEveryScenario({ serviceDetail }) {
+  const scenario = serviceDetail?.scenario;
+  const tabs = Array.isArray(scenario?.tabs) ? scenario.tabs : [];
+  const image = scenario?.image;
+  const alt = scenario?.alt;
+  const title = scenario?.title;
 
-const SendIcon = () => (
-  <Send className="w-4 h-4 text-white" />
-);
+  if (!scenario || tabs.length === 0 || !image || !alt || !title) {
+    return null;
+  }
 
-export default function BuiltForEveryScenario() {
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-linear-to-br from-blue-50 via-white to-indigo-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl container 2xl:max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 text-center mb-8">
-          Built for Every Scenario
+          {title}
         </h2>
 
         {/* Tabs */}
@@ -33,8 +31,8 @@ export default function BuiltForEveryScenario() {
         {/* Chat Window Image */}
         <div className="bg-white rounded-2xl p-8 shadow-xl max-w-3xl mx-auto">
           <img 
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlLPXVvrZb89hahDsa48hpfy_ha8Rqb5eHRg&s" 
-            alt="WhatsApp Chat Scenario" 
+            src={image} 
+            alt={alt} 
             className="w-full h-auto object-cover rounded-xl"
           />
         </div>
