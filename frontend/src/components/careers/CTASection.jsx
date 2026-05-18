@@ -20,7 +20,7 @@ that fits your skills, send us your resume anyway.
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           
           {/* Primary Button */}
-          <a href="mailto:info@rubous.tech" className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-gray-100 transition inline-flex items-center gap-2">
+          <a href="mailto:info@ruboustech.com" className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-gray-100 transition inline-flex items-center gap-2">
             Send Resume
           </a>
 
