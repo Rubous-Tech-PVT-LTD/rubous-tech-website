@@ -62,82 +62,30 @@ const faqs = [
   },
 ];
  
-// ─── Sub-components ──────────────────────────────────────────────────────────
- 
-/** Futuristic room illustration (SVG/div based, no external image needed) */
-const RoomIllustration = () => (
-  <div className="w-full h-full bg-gradient-to-br from-[#0a1628] via-[#0d2348] to-[#0f1f3d] relative flex items-center justify-center overflow-hidden">
-    {/* Ceiling light strip */}
-    <div className="absolute top-[10%] left-[20%] right-[20%] h-[2px] bg-white/90 shadow-[0_0_20px_4px_rgba(200,230,255,0.7),0_0_40px_8px_rgba(150,200,255,0.4)]" />
-    {/* Corner light lines */}
-    <div className="absolute top-[8%] left-[8%] w-[2px] h-[40%] bg-white/70 rotate-[-10deg]" />
-    <div className="absolute top-[8%] right-[8%] w-[2px] h-[40%] bg-white/70 rotate-[10deg]" />
- 
-    {/* Left panel */}
-    <div className="absolute left-0 top-[15%] bottom-[15%] w-[18%] bg-gradient-to-b from-blue-700/15 to-blue-400/8 border border-blue-400/20 rounded-r-lg flex flex-col gap-1.5 p-3">
-      {[1, 0.5, 1, 0.3, 1].map((o, i) => (
-        <div key={i} className="h-[2px] rounded-sm bg-cyan-400/30" style={{ opacity: o }} />
-      ))}
-    </div>
- 
-    {/* Right panel */}
-    <div className="absolute right-0 top-[15%] bottom-[15%] w-[18%] bg-gradient-to-b from-blue-700/15 to-blue-400/8 border border-blue-400/20 rounded-l-lg flex flex-col gap-1.5 p-3">
-      {[1, 0.5, 1, 0.3, 1].map((o, i) => (
-        <div key={i} className="h-[2px] rounded-sm bg-cyan-400/30" style={{ opacity: o }} />
-      ))}
-    </div>
- 
-    {/* Center screen */}
-    <div className="absolute bottom-[28%] left-1/2 -translate-x-1/2 w-40 h-20 bg-[rgba(0,30,80,0.8)] border border-cyan-400/40 rounded-md flex items-center justify-center shadow-[0_0_30px_rgba(0,150,255,0.3),inset_0_0_20px_rgba(0,100,200,0.2)]">
-      <p className="text-[10px] font-bold text-blue-200/90 tracking-widest text-center leading-relaxed">
-        SMART<br />AUTOMATION<br />SYSTEMS
-      </p>
-    </div>
- 
-    {/* Floor rings */}
-    {[
-      { w: 280, h: 60, bottom: "8%" },
-      { w: 200, h: 44, bottom: "10%" },
-      { w: 120, h: 28, bottom: "12%" },
-    ].map((r, i) => (
-      <div
-        key={i}
-        className="absolute left-1/2 -translate-x-1/2 rounded-full border border-cyan-400/30 shadow-[0_0_12px_rgba(0,180,255,0.2)]"
-        style={{ width: r.w, height: r.h, bottom: r.bottom }}
-      />
-    ))}
- 
-    {/* Floor ambient glow */}
-    <div className="absolute bottom-0 left-[10%] right-[10%] h-[35%] bg-[radial-gradient(ellipse_at_50%_100%,rgba(0,150,255,0.12),transparent_70%)] pointer-events-none" />
-  </div>
-);
- 
 /** Hero / Our Process section */
 const OurProcessHero = () => (
-  <section className="bg-[#f0f2f7] min-h-screen flex items-center justify-center px-5 font-['DM_Sans',sans-serif]">
-    <div className="w-full max-w-[1100px] 2xl:max-w-360 py-20 px-15 flex flex-col md:flex-row items-center justify-between gap-16">
+  <section className="bg-[#f0f2f7] max-2xl:min-h-screen flex items-center justify-center px-5 font-['DM_Sans',sans-serif]">
+    <div className="w-full max-w-297 2xl:max-w-360 py-20 px-6 flex flex-col md:flex-row items-center justify-between gap-16">
       {/* Left: text */}
-      <div className="flex-1 max-w-[420px]">
+      <div className="flex-1 max-w-105">
         <p className="text-[11px] font-semibold tracking-[0.14em] text-[#1a4fd8] uppercase mb-5 animate-[fadeUp_0.5s_ease_forwards] opacity-0">
           Workflow Excellence
         </p>
         <h1 className="font-['Sora',sans-serif] text-[clamp(44px,5vw,60px)] font-extrabold text-[#0d1b3e] leading-none mb-5 tracking-[-0.02em] animate-[fadeUp_0.6s_0.1s_ease_forwards] opacity-0">
           Our Process
         </h1>
-        <p className="text-[15px] text-[#4a5568] leading-[1.7] mb-8 max-w-[360px] animate-[fadeUp_0.6s_0.2s_ease_forwards] opacity-0">
+        <p className="text-[15px] text-[#4a5568] leading-[1.7] mb-8 max-w-90 animate-[fadeUp_0.6s_0.2s_ease_forwards] opacity-0">
           A simple and effective way we build and deliver automation solutions.
           From idea to execution — we handle everything.
         </p>
         <button className="flex items-center gap-3 text-[14px] font-medium text-[#1a4fd8] bg-transparent border-none cursor-pointer animate-[fadeUp_0.6s_0.3s_ease_forwards] opacity-0">
-          <span className="w-9 h-[2px] bg-[#1a4fd8] flex-shrink-0" />
+          <span className="w-9 h-0.5 bg-[#1a4fd8] shrink-0" />
           Full-cycle orchestration
         </button>
       </div>
  
-      {/* Right: illustration */}
-      <div className="flex-shrink-0 w-full md:w-[420px] h-[360px] rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)] animate-[fadeUp_0.7s_0.15s_ease_forwards] opacity-0">
-        <RoomIllustration />
-      </div>
+   <img src="/process-hero.png" alt="Our Process" className="rounded-xl w-full max-w-md lg:max-w-lg" />
+
     </div>
  
     <style>{`
@@ -151,12 +99,12 @@ const OurProcessHero = () => (
  
 /** Road to Automation section */
 const RoadToAutomation = () => (
-  <section className="bg-[#eef2f9] min-h-screen flex items-center justify-center px-5 font-['DM_Sans',sans-serif]">
-    <div className="w-full max-w-[1100px] 2xl:max-w-360 py-20 px-15 text-center">
+  <section className="bg-[#eef2f9]  flex items-center justify-center px-5 font-['DM_Sans',sans-serif]">
+    <div className="w-full max-w-275 2xl:max-w-360 py-20 px-15 text-center">
       <h2 className="font-['Sora',sans-serif] text-[clamp(32px,4vw,46px)] font-bold text-[#0d1b3e] mb-4 tracking-[-0.02em]">
         The Road to Automation
       </h2>
-      <p className="text-[15px] text-[#5a6a85] leading-[1.7] max-w-[560px] mx-auto mb-16">
+      <p className="text-[15px] text-[#5a6a85] leading-[1.7] max-w-140 mx-auto mb-16">
         Our proven methodology ensures that every project transitions seamlessly from concept
         to high-performance reality.
       </p>
@@ -168,7 +116,7 @@ const RoadToAutomation = () => (
             className="flex flex-col gap-3.5 opacity-0"
             style={{ animation: `fadeUp 0.5s ${0.05 + i * 0.07}s ease forwards` }}
           >
-            <div className="w-[52px] h-[52px] rounded-full bg-[#2b3fd4] text-white text-[13px] font-semibold flex items-center justify-center tracking-wide flex-shrink-0">
+            <div className="w-13 h-13 rounded-full bg-[#2b3fd4] text-white text-[13px] font-semibold flex items-center justify-center tracking-wide shrink-0">
               {s.num}
             </div>
             <p className="font-['Sora',sans-serif] text-[16px] font-semibold text-[#0d1b3e] leading-snug">
@@ -194,7 +142,7 @@ const FeaturesSection = () => (
   <div className="bg-[#eef0f8] font-['Inter',sans-serif]">
     {/* Feature Cards */}
     <div className="px-12 pt-12 pb-8 2xl:max-w-360 mx-auto" >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[18px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4.5">
         {processFeatures.map(({ icon, title, desc }) => (
           <div key={title} className="bg-white rounded-2xl px-6 pt-7 pb-8 shadow-[0_1px_4px_rgba(0,0,0,0.05)]">
             <div className="text-[#3d52d5] mb-4">{icon}</div>
@@ -206,7 +154,7 @@ const FeaturesSection = () => (
     </div>
  
     {/* Divider */}
-    <div className="h-[60px] bg-[#eef0f8]" />
+    <div className="h-15 bg-[#eef0f8]" />
  
     {/* Powering the Future */}
     <div className="bg-[#f5f6fb] py-16 px-12 text-center">
@@ -219,7 +167,7 @@ const FeaturesSection = () => (
         {techPills.slice(0, 4).map(({ icon, label }) => (
           <div
             key={label}
-            className="inline-flex items-center gap-1.75 bg-white border-[1.5px] border-[#e2e4ef] rounded-full px-5 py-[9px] text-[13.5px] font-medium text-[#374151] whitespace-nowrap"
+            className="inline-flex items-center gap-1.75 bg-white border-[1.5px] border-[#e2e4ef] rounded-full px-5 py-2.25 text-[13.5px] font-medium text-[#374151] whitespace-nowrap"
           >
             <span className="text-[#3d52d5] flex">{icon}</span>
             {label}
@@ -232,7 +180,7 @@ const FeaturesSection = () => (
         {techPills.slice(4).map(({ icon, label }) => (
           <div
             key={label}
-            className="inline-flex items-center gap-[7px] bg-white border-[1.5px] border-[#e2e4ef] rounded-full px-5 py-[9px] text-[13.5px] font-medium text-[#374151] whitespace-nowrap"
+            className="inline-flex items-center gap-1.75 bg-white border-[1.5px] border-[#e2e4ef] rounded-full px-5 py-2.25 text-[13.5px] font-medium text-[#374151] whitespace-nowrap"
           >
             <span className="text-[#3d52d5] flex">{icon}</span>
             {label}

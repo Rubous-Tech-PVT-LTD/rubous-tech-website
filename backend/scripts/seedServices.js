@@ -79,7 +79,7 @@ const detailTemplates = {
     heroImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80',
     communicationDescription: 'Bridge customer questions and internal systems with a chat layer that can answer instantly, qualify intent, and hand off only the conversations that need a human.',
     tabs: ['Support', 'Lead capture', 'FAQ automation', 'WhatsApp', 'Web chat'],
-    scenarioImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlLPXVvrZb89hahDsa48hpfy_ha8Rqb5eHRg&s',
+    scenarioImage: 'https://i.ibb.co/FbNHq947/chatbot.png',
     highlight: { value: '98%', label: 'Average open rate' },
     faqTitle: 'Common questions',
     faqs: [
